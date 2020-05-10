@@ -336,7 +336,7 @@ async function test(id, name) {
                     test
                 ) VALUES (
                     ${id}::integer, 
-                    ${name}::text
+                    '${name}'::text
                 );
                 `)
                 .then(res => {
