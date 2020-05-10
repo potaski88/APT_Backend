@@ -316,11 +316,11 @@ async function updateProduct({id, price}) {
 
 
 
-async function test({item}) {
+async function test(item) {
 
 
     return item
-
+/*
     const testConnect = {
         user: "ofbugdwpkfgivl",
         password: "cc6fe18e3014457b6b03884688458dcdc22199990d06b22924710e7213c1df82",
@@ -349,6 +349,8 @@ async function test({item}) {
         finally{
             client.end()
         }
+
+        */
 }
 
 
