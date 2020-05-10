@@ -329,7 +329,7 @@ async function test() {
         {id: 6, test: "hallo"},
         {id: 7, test: "hallo"},
     ]
-    input.forEach(async item => {
+    return input.forEach(async item => {
         const client = new Client(testConnect)
     try {
         await client.connect()
@@ -366,8 +366,7 @@ async function showTest() {
     try {
         await client.connect()
         return await client.query(`
-            SELECT * FROM public.test;
-            `)
+            SELECT * FROM public.test;`)
             .then(res => {
                 return res.rows
             })
