@@ -89,15 +89,15 @@ app.get('/bre', async (req, res) => {
 
 
 
-app.get('/testo', async (req, res) => {
+app.get('/test', async (req, res) => {
 
 //    res.send(JSON.stringify(process.env.DATABASE_URL))
 
     const test = await DB_config.test()
         
-        if(products){
+        if(test){
             res.send("OK")
-            return products;
+//            return products;
         }else{
             res.send("Fail")
         }
