@@ -91,9 +91,6 @@ app.get('/bre', async (req, res) => {
 
 app.get('/testo', async (req, res) => {
 
-    res.send(JSON.stringify(process.env.DATABASE_URL))
-
-
     const conn_data = {
         user: "pzwdfyitycyqus",
         password: "21ad6d97e80cfef3d0e18a117e10b123ca2ad82e83d770a6dd5a0b5bcf3c5f0b",
