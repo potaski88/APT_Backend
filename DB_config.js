@@ -339,7 +339,7 @@ async function test() {
                     price
                 ) VALUES (
                     '"${item.id}"'::integer, 
-                    '"${item.text}"'::text
+                    '"${item.test}"'::text
                 );
                 `)
                 .then(res => {
