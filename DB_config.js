@@ -316,7 +316,7 @@ async function updateProduct({id, price}) {
 
 
 
-async function test(item) {
+async function test({item}) {
     const testConnect = {
         user: "ofbugdwpkfgivl",
         password: "cc6fe18e3014457b6b03884688458dcdc22199990d06b22924710e7213c1df82",
@@ -325,7 +325,6 @@ async function test(item) {
         database: "d7u7v3ljdp6suo",
         omitNull: true
     }
-
     const client = new Client(testConnect)
         try {
             await client.connect()
