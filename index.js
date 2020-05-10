@@ -88,7 +88,7 @@ app.get('/bre', async (req, res) => {
 
 
 
-app.get('/test', async (req, res) => {
+app.get('/testi', async (req, res) => {
     const conn_data = {
         user: "pzwdfyitycyqus",
         password: "21ad6d97e80cfef3d0e18a117e10b123ca2ad82e83d770a6dd5a0b5bcf3c5f0b",
