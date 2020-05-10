@@ -106,13 +106,13 @@ app.get('/testi', async (req, res) => {
 
     const client = new Client(process.env.DATABASE_URL)
         try {
-            const client = await pool.connect()
-            const result = await client.query(`SELECT NOW();`)
+            const c = await client.connect()
+            const result = await c.query(`SELECT NOW();`)
             console.log(result)
             res.send(JSON.stringify("schnurz"))
         } catch (error) {console.log(error) }
         finally{
-            client.end()
+            c.end()
             res.send(JSON.stringify("hurz"))
         } 
     
