@@ -340,7 +340,7 @@ async function test() {
             return await client.query(`
                 INSERT INTO public.test (
                     id, 
-                    price
+                    test
                 ) VALUES (
                     2::integer, 
                     'moin'::text
@@ -366,7 +366,7 @@ async function test() {
             await client.query(`
                 INSERT INTO public.test (
                     id, 
-                    price
+                    test
                 ) VALUES (
                     '"${item.id}"'::integer, 
                     '"${item.test}"'::text
