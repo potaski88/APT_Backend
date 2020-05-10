@@ -357,7 +357,7 @@ async function test() {
         } 
     })
     
-    return "OK"
+    return x
 }
 
 async function showTest() {
