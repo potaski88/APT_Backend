@@ -87,7 +87,7 @@ app.get('/bre', async (req, res) => {
 })
 
 
-/*
+
 app.get('/test', async (req, res) => {
     const conn_data = {
         user: "pzwdfyitycyqus",
@@ -95,10 +95,9 @@ app.get('/test', async (req, res) => {
         host: "ec2-46-137-156-205.eu-west-1.compute.amazonaws.com",
         port: 5432,
         database: "d85bnlr9fphuei",
-        ssl: true
     }
     const conn_str ='postgres://pzwdfyitycyqus:21ad6d97e80cfef3d0e18a117e10b123ca2ad82e83d770a6dd5a0b5bcf3c5f0b@ec2-46-137-156-205.eu-west-1.compute.amazonaws.com:5432/d85bnlr9fphuei'
-    const client = new Client(conn_str)
+    const client = new Client(conn_data)
         try {
             await client.connect()
             return await client.query(`SELECT NOW();`)
@@ -120,30 +119,10 @@ app.get('/test', async (req, res) => {
         { id: 24, price: y },
         { id: 3, price: y },
     ]
-    /*
-    x.forEach(async item => {
-        setTimeout(async function(){
-            const client = new Pool(DB_config.connection_data)
-            try {
-                await client.connect()
-                return await client.query(`UPDATE public.products SET price = ${item.price} WHERE id = ${item.id};`)
-                    .then(res => {
-                //        console.log(res)
-                        return res
-                    })
-                    .catch (error => console.log(error))
-            } catch (error) {console.log(error) }
-            finally{
-                client.release()
-            } 
-        }, 9000);
-        })
-
-   
     res.send(JSON.stringify("OK"))
 
     })
-*/
+
 
 
 
