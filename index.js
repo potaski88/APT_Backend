@@ -86,12 +86,12 @@ app.put('/updateOne', async (req, res) => {
 
 app.get('/test', async (req, res) => {
     const input = [
-        {id: 3, test: "hallo"},
-        {id: 4, test: "hallo"},
-        {id: 5, test: "hallo"},
-        {id: 6, test: "hallo"},
-        {id: 7, test: "hallo"},
-        {id: 8, test: "hallo"},
+        {id: 3, name: "hallo"},
+        {id: 4, name: "hallo"},
+        {id: 5, name: "hallo"},
+        {id: 6, name: "hallo"},
+        {id: 7, name: "hallo"},
+        {id: 8, name: "hallo"},
     ]
     const test = await DB_config.test(input[0])    
         if(test){
