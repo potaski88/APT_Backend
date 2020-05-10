@@ -326,39 +326,14 @@ async function test() {
         omitNull: true
     }
     const input = [
-        {id: 2, test: "hallo"},
         {id: 3, test: "hallo"},
         {id: 4, test: "hallo"},
         {id: 5, test: "hallo"},
         {id: 6, test: "hallo"},
         {id: 7, test: "hallo"},
+        {id: 8, test: "hallo"},
     ]
-
-    const client = new Client(testConnect)
-        try {
-            await client.connect()
-            return await client.query(`
-                INSERT INTO public.test (
-                    id, 
-                    test
-                ) VALUES (
-                    2::integer, 
-                    'moin'::text
-                );
-                `)
-                .then(res => {
-                    return res
-                })
-                .catch (error => console.log(error))
-
-
-            
-        } catch (error) {console.log(error)}
-        finally{
-            client.end()
-        }
-
-        /*
+        
     input.forEach(async item => {
         const client = new Client(testConnect)
         try {
@@ -373,7 +348,7 @@ async function test() {
                 );
                 `)
                 .then(res => {
-            //        return res.rows[0].id
+                    return res.rows
                 })
                 .catch (error => console.log(error))
         } catch (error) {console.log(error)}
@@ -381,7 +356,7 @@ async function test() {
             client.end()
         } 
     })
-    */
+    
 //    return "OK"
 }
 
