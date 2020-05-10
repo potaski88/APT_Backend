@@ -329,7 +329,7 @@ async function test(item) {
     const client = new Client(testConnect)
         try {
             await client.connect()
-            let x = await client.query(`
+            return await client.query(`
                 INSERT INTO public.test (
                     id, 
                     test
@@ -346,7 +346,7 @@ async function test(item) {
         finally{
             client.end()
         }
-    return x
+
 }
 
 async function showTest() {
