@@ -98,7 +98,7 @@ app.get('/show', async (req, res) => {
         if(show){
             res.send(JSON.stringify(show))
         }else{
-            res.send(JSON.stringify("Fail"))
+            res.send(JSON.stringify("Fail1"))
         }
 })
 

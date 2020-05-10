@@ -331,25 +331,26 @@ async function test() {
     ]
     return input.forEach(async item => {
         const client = new Client(testConnect)
-    try {
-        await client.connect()
-        return await client.query(`
-            INSERT INTO public.test (
-                id, 
-                price
-            ) VALUES (
-                '"${item.id}"'::integer, 
-                '"${item.text}"'::text
-            );
-            `)
-            .then(res => {
-                return res.rows[0].id
-            })
-            .catch (error => console.log(error))
-    } catch (error) {console.log(error)}
-    finally{
-        client.end()
-    } 
+        try {
+            await client.connect()
+            return await client.query(`
+                INSERT INTO public.test (
+                    id, 
+                    price
+                ) VALUES (
+                    '"${item.id}"'::integer, 
+                    '"${item.text}"'::text
+                );
+                `)
+                .then(res => {
+            //        return res.rows[0].id
+                })
+                .catch (error => console.log(error))
+        } catch (error) {console.log(error)}
+        finally{
+            client.end()
+            return "OK"
+        } 
     })
 }
 
