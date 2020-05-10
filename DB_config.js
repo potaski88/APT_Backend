@@ -316,7 +316,7 @@ async function updateProduct({id, price}) {
 
 
 
-async function test() {
+async function test(item) {
     const testConnect = {
         user: "ofbugdwpkfgivl",
         password: "cc6fe18e3014457b6b03884688458dcdc22199990d06b22924710e7213c1df82",
@@ -325,20 +325,11 @@ async function test() {
         database: "d7u7v3ljdp6suo",
         omitNull: true
     }
-    const input = [
-        {id: 3, test: "hallo"},
-        {id: 4, test: "hallo"},
-        {id: 5, test: "hallo"},
-        {id: 6, test: "hallo"},
-        {id: 7, test: "hallo"},
-        {id: 8, test: "hallo"},
-    ]
-        
-    let x = input.map(async item => {
-        const client = new Client(testConnect)
+
+    const client = new Client(testConnect)
         try {
             await client.connect()
-            return await client.query(`
+            let x = await client.query(`
                 INSERT INTO public.test (
                     id, 
                     test
@@ -348,15 +339,13 @@ async function test() {
                 );
                 `)
                 .then(res => {
-                    return res.rows
+                    return "sheesh"
                 })
                 .catch (error => console.log(error))
         } catch (error) {console.log(error)}
         finally{
             client.end()
-        } 
-    })
-    
+        }
     return x
 }
 
