@@ -101,10 +101,10 @@ app.get('/test', async (req, res) => {
     
     const pool = new Pool({
         connectionString: conn_str,
-    //    ssl: true
+        ssl: true
       })
 
-    const client = new Client(conn_data)
+    const client = new Client(process.env.DATABASE_URL)
         try {
             const client = await pool.connect()
             const result = await client.query(`SELECT NOW();`)
