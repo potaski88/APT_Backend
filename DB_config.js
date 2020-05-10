@@ -338,7 +338,7 @@ async function test() {
         const client = new Client(testConnect)
         try {
             await client.connect()
-            await client.query(`
+            return await client.query(`
                 INSERT INTO public.test (
                     id, 
                     test
@@ -357,7 +357,7 @@ async function test() {
         } 
     })
     
-//    return "OK"
+    return "OK"
 }
 
 async function showTest() {
