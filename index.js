@@ -83,30 +83,23 @@ app.put('/updateOne', async (req, res) => {
 
 
 
-app.get('/bre', async (req, res) => {
-    res.send(JSON.stringify("bre"))
-})
-
-
 
 app.get('/test', async (req, res) => {
-
-//    res.send(JSON.stringify(process.env.DATABASE_URL))
-
-    const test = await DB_config.test()
-        
+    const test = await DB_config.test()    
         if(test){
             res.send(JSON.stringify(test))
-//            return products;
         }else{
             res.send(JSON.stringify("Fail"))
         }
-
-
-    
-
 })
-
+app.get('/show', async (req, res) => {
+    const test = await DB_config.showTest()    
+        if(test){
+            res.send(JSON.stringify(test))
+        }else{
+            res.send(JSON.stringify("Fail"))
+        }
+})
 
 
 
