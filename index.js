@@ -93,7 +93,7 @@ app.get('/test', async (req, res) => {
         }
 })
 app.get('/show', async (req, res) => {
-    res.send(JSON.stringify("Hi"))
+
     const show = await DB_config.showTest()    
         if(show){
             res.send(JSON.stringify(show))
