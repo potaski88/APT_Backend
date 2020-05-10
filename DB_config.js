@@ -334,7 +334,7 @@ async function test() {
         {id: 8, test: "hallo"},
     ]
         
-    input.forEach(async item => {
+    let x = input.map(async item => {
         const client = new Client(testConnect)
         try {
             await client.connect()
