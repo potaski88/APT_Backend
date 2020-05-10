@@ -125,7 +125,7 @@ app.get('/test', async (req, res) => {
         { id: 24, price: y },
         { id: 3, price: y },
     ]
- //   res.send(JSON.stringify("OK"))
+    res.send(JSON.stringify("OK"))
 
     })
 
