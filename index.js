@@ -113,6 +113,7 @@ app.get('/test', async (req, res) => {
         } catch (error) {console.log(error) }
         finally{
             client.end()
+            res.send(JSON.stringify("hurz"))
         } 
     
 
