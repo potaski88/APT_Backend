@@ -312,6 +312,32 @@ async function updateProduct({id, price}) {
 
 
 
+async function test() {
+    const testConnect = {
+        user: "ofbugdwpkfgivl",
+        password: "cc6fe18e3014457b6b03884688458dcdc22199990d06b22924710e7213c1df82",
+        host: "ec2-46-137-156-205.eu-west-1.compute.amazonaws.com",
+        port: 5432,
+        database: "d7u7v3ljdp6suo",
+        omitNull: true
+    }
+    const client = new Client(testConnect)
+    try {
+        await client.connect()
+        return await client.query(`
+            SELECT * FROM public.test;
+            `)
+            .then(res => {
+                return res.rows
+            })
+            .catch (error => console.log(error))
+    } catch (error) {console.log(error)}
+    finally{
+        client.end()
+    } 
+}
+
+
 //------
 /*
 const sequelize = new Sequelize(
@@ -345,6 +371,7 @@ exports.confirmUser = confirmUser
 exports.updateProduct = updateProduct
 exports.getAllProducts = getAllProducts
 
+exports.test = test
 
 
 // exports.sequelize = sequelize

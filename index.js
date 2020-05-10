@@ -91,36 +91,20 @@ app.get('/bre', async (req, res) => {
 
 app.get('/testo', async (req, res) => {
 
-    res.send(JSON.stringify(process.env.DATABASE_URL))
+//    res.send(JSON.stringify(process.env.DATABASE_URL))
 
-    const conn_data = {
-        user: "pzwdfyitycyqus",
-        password: "21ad6d97e80cfef3d0e18a117e10b123ca2ad82e83d770a6dd5a0b5bcf3c5f0b",
-        host: "ec2-46-137-156-205.eu-west-1.compute.amazonaws.com",
-        port: 5432,
-        database: "d85bnlr9fphuei",
-        ssl:true
-    }
-    const conn_str ='postgres://pzwdfyitycyqus:21ad6d97e80cfef3d0e18a117e10b123ca2ad82e83d770a6dd5a0b5bcf3c5f0b@ec2-46-137-156-205.eu-west-1.compute.amazonaws.com:5432/d85bnlr9fphuei'
-    
-    const pool = new Pool({
-        connectionString: conn_str,
-        ssl: true
-      })
+    const test = await DB_config.test()
+        
+        if(products){
+            res.send("OK")
+            return products;
+        }else{
+            res.send("Fail")
+        }
 
-    const client = new Client(process.env.DATABASE_URL)
-        try {
-            const c = await client.connect()
-            const result = await c.query(`SELECT NOW();`)
-            console.log(result)
-            res.send(JSON.stringify("schnurz"))
-        } catch (error) {console.log(error) }
-        finally{
-            c.end()
-            res.send(JSON.stringify("hurz"))
-        } 
+
     
-    })
+})
 
 
 
