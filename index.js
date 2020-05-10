@@ -98,6 +98,16 @@ app.get('/test', async (req, res) => {
         ssl:true
     }
     const conn_str ='postgres://pzwdfyitycyqus:21ad6d97e80cfef3d0e18a117e10b123ca2ad82e83d770a6dd5a0b5bcf3c5f0b@ec2-46-137-156-205.eu-west-1.compute.amazonaws.com:5432/d85bnlr9fphuei'
+    
+    const pool = new Pool({
+        connectionString: conn_str,
+      })
+      pool.query('SELECT NOW()', (err, res) => {
+        res.send(JSON.stringify("OK"))
+        console.log(err, res)
+        pool.end()
+      })
+    /*
     const client = new Client(conn_data)
         try {
             await client.connect()
@@ -115,7 +125,7 @@ app.get('/test', async (req, res) => {
             client.end()
             res.send(JSON.stringify("hurz"))
         } 
-    
+    */
 
     const y = 3
     const x = [
@@ -125,7 +135,7 @@ app.get('/test', async (req, res) => {
         { id: 24, price: y },
         { id: 3, price: y },
     ]
-    res.send(JSON.stringify("OK"))
+    
 
     })
 
