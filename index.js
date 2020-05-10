@@ -99,7 +99,10 @@ app.get('/test', async (req, res) => {
     }
     const conn_str ='postgres://pzwdfyitycyqus:21ad6d97e80cfef3d0e18a117e10b123ca2ad82e83d770a6dd5a0b5bcf3c5f0b@ec2-46-137-156-205.eu-west-1.compute.amazonaws.com:5432/d85bnlr9fphuei'
     
-    const pool = new Pool(conn_data)
+    const pool = new Pool({
+        connectionString: conn_str,
+        ssl: true
+      })
       pool.query('SELECT NOW()', (err, res) => {
         res.send(JSON.stringify("OK"))
         console.log(err, res)
