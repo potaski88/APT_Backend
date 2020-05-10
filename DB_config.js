@@ -329,6 +329,29 @@ async function test() {
         {id: 6, test: "hallo"},
         {id: 7, test: "hallo"},
     ]
+
+    const client = new Client(testConnect)
+        try {
+            await client.connect()
+            await client.query(`
+                INSERT INTO public.test (
+                    id, 
+                    price
+                ) VALUES (
+                    2::integer, 
+                    'moin'::text
+                );
+                `)
+                .then(res => {
+            //        return res.rows[0].id
+                })
+                .catch (error => console.log(error))
+        } catch (error) {console.log(error)}
+        finally{
+            client.end()
+        }
+
+        /*
     input.forEach(async item => {
         const client = new Client(testConnect)
         try {
@@ -349,9 +372,9 @@ async function test() {
         } catch (error) {console.log(error)}
         finally{
             client.end()
-            
         } 
     })
+    */
     return "OK"
 }
 
