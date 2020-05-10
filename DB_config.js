@@ -342,12 +342,12 @@ async function test(item) {
                     return "sheesh"
                 })
                 .catch (error => console.log(error))
-        } catch (error) {console.log(error)}
+        } catch (error) {return "skurr")}
         finally{
             client.end()
         }
-
 }
+
 
 async function showTest() {
     const testConnect = {
