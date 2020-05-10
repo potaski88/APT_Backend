@@ -87,7 +87,7 @@ app.get('/bre', async (req, res) => {
 })
 
 
-
+/*
 app.get('/test', async (req, res) => {
     const conn_data = {
         user: "pzwdfyitycyqus",
@@ -139,11 +139,11 @@ app.get('/test', async (req, res) => {
         }, 9000);
         })
 
-    */
+   
     res.send(JSON.stringify("OK"))
 
     })
-
+*/
 
 
 
