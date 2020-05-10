@@ -316,7 +316,7 @@ async function updateProduct({id, price}) {
 
 
 
-async function test(item) {
+async function test(id, name) {
 
 
     const testConnect = {
@@ -335,8 +335,8 @@ async function test(item) {
                     id, 
                     test
                 ) VALUES (
-                    ${item.id}::integer, 
-                    ${item.name}::text
+                    ${id}::integer, 
+                    ${name}::text
                 );
                 `)
                 .then(res => {

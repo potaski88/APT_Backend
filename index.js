@@ -93,7 +93,7 @@ app.get('/test', async (req, res) => {
         {id: 7, name: "hallo"},
         {id: 8, name: "hallo"},
     ]
-    const test = await DB_config.test(input[0])    
+    const test = await DB_config.test(input[0].id, input[0].name)    
         if(test){
             res.send(JSON.stringify(test))
         }else{
