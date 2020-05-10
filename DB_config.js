@@ -329,7 +329,7 @@ async function test() {
         {id: 6, test: "hallo"},
         {id: 7, test: "hallo"},
     ]
-    return input.forEach(async item => {
+    input.forEach(async item => {
         const client = new Client(testConnect)
         try {
             await client.connect()
@@ -349,9 +349,10 @@ async function test() {
         } catch (error) {console.log(error)}
         finally{
             client.end()
-            return "OK"
+            
         } 
     })
+    return "OK"
 }
 
 async function showTest() {
