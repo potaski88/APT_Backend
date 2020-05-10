@@ -93,9 +93,10 @@ app.get('/test', async (req, res) => {
         }
 })
 app.get('/show', async (req, res) => {
-    const test = await DB_config.showTest()    
-        if(test){
-            res.send(JSON.stringify(test))
+    res.send(JSON.stringify("Hi"))
+    const show = await DB_config.showTest()    
+        if(show){
+            res.send(JSON.stringify(show))
         }else{
             res.send(JSON.stringify("Fail"))
         }
