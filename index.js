@@ -89,7 +89,7 @@ app.get('/test', async (req, res) => {
         if(test){
             res.send(JSON.stringify(test))
         }else{
-            res.send(JSON.stringify("Fail1"))
+            res.send(JSON.stringify("Failo"))
         }
 })
 app.get('/show', async (req, res) => {
