@@ -86,21 +86,21 @@ app.put('/updateOne', async (req, res) => {
 
 app.get('/test', async (req, res) => {
     const input = [
-
-        {id: 6, name: "hallo"},
-        {id: 7, name: "hallo"},
         {id: 8, name: "hallo"},
         {id: 9, name: "hallo"},
+        {id: 10, name: "hallo"},
+        {id: 11, name: "hallo"},
     ]
     var i;
     for (i = 0; i < input.length; i++) {
         const test = await DB_config.test(input[i].id, input[0].name)    
         if(test){
-            res.send(JSON.stringify(test))
+    //        res.send(JSON.stringify(test))
         }else{
             res.send(JSON.stringify("Failooo"))
         }
     }
+    res.send(JSON.stringify("OK"))
     
 })
 
