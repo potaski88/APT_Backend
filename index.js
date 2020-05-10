@@ -1,3 +1,4 @@
+require('dotenv').config()
 const { Pool, Client } = require('pg')
 const express = require('express');
 const DB_config = require('./DB_config.js');
