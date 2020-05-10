@@ -88,7 +88,7 @@ app.get('/bre', async (req, res) => {
 
 
 
-app.get('/testi', async (req, res) => {
+app.get('/testo', async (req, res) => {
 
     res.send(JSON.stringify(process.env.DATABASE_URL))
 
