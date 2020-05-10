@@ -85,7 +85,15 @@ app.put('/updateOne', async (req, res) => {
 
 
 app.get('/test', async (req, res) => {
-    const test = await DB_config.test()    
+    const input = [
+        {id: 3, test: "hallo"},
+        {id: 4, test: "hallo"},
+        {id: 5, test: "hallo"},
+        {id: 6, test: "hallo"},
+        {id: 7, test: "hallo"},
+        {id: 8, test: "hallo"},
+    ]
+    const test = await DB_config.test(input[0])    
         if(test){
             res.send(JSON.stringify(test))
         }else{
