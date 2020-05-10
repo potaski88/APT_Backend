@@ -96,14 +96,15 @@ app.get('/test', async (req, res) => {
     const test = await DB_config.test()
         
         if(test){
-            res.send(test)
+            res.send(JSON.stringify(test))
 //            return products;
         }else{
-            res.send("Fail")
+            res.send(JSON.stringify("Fail"))
         }
 
 
     
+
 })
 
 
