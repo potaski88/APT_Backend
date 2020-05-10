@@ -82,7 +82,9 @@ app.put('/updateOne', async (req, res) => {
 
 
 
-
+app.get('/bre', async (req, res) => {
+    res.send(JSON.stringify("bre"))
+})
 
 
 
