@@ -96,7 +96,7 @@ app.get('/test', async (req, res) => {
     const test = await DB_config.test()
         
         if(test){
-            res.send("OK")
+            res.send(test)
 //            return products;
         }else{
             res.send("Fail")
