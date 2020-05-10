@@ -101,43 +101,21 @@ app.get('/test', async (req, res) => {
     
     const pool = new Pool({
         connectionString: conn_str,
-        ssl: true
+    //    ssl: true
       })
-      pool.query('SELECT * FROM products', (err, res) => {
-        res.send(JSON.stringify("OK"))
-        console.log(err, res)
-        pool.end()
-      })
-    /*
+
     const client = new Client(conn_data)
         try {
-            await client.connect()
-            await client.query(`SELECT NOW();`)
-            .then(res => {
-                console.log(res)
-                res.send(JSON.stringify("res"))
-            })
-            .catch (error => {
-                console.log(error)
-                res.send(JSON.stringify("failed"))
-            })
+            const client = await pool.connect()
+            const result = await client.query(`SELECT NOW();`)
+            console.log(result)
+            res.send(JSON.stringify("schnurz"))
         } catch (error) {console.log(error) }
         finally{
             client.end()
             res.send(JSON.stringify("hurz"))
         } 
-    */
-
-    const y = 3
-    const x = [
-        { id: 28, price: y },
-        { id: 23, price: y },
-        { id: 22, price: y },
-        { id: 24, price: y },
-        { id: 3, price: y },
-    ]
     
-
     })
 
 
