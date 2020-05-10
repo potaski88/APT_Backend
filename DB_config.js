@@ -312,6 +312,10 @@ async function updateProduct({id, price}) {
 
 
 
+
+
+
+
 async function test() {
     const testConnect = {
         user: "ofbugdwpkfgivl",
@@ -343,7 +347,7 @@ async function test() {
                 );
                 `)
                 .then(res => {
-                    return "OK"
+                    return res
                 })
                 .catch (error => console.log(error))
         } catch (error) {console.log(error)}
