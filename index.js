@@ -101,12 +101,15 @@ app.get('/test', async (req, res) => {
     const client = new Client(conn_data)
         try {
             await client.connect()
-            return await client.query(`SELECT NOW();`)
-                .then(res => {
-                    console.log(res)
-                    res.send(JSON.stringify(res))
-                })
-                .catch (error => console.log(error))
+            await client.query(`SELECT NOW();`)
+            .then(res => {
+                console.log(res)
+                res.send(JSON.stringify("res"))
+            })
+            .catch (error => {
+                console.log(error)
+                res.send(JSON.stringify("failed"))
+            })
         } catch (error) {console.log(error) }
         finally{
             client.end()
