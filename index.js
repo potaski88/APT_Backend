@@ -104,6 +104,7 @@ app.get('/test', async (req, res) => {
             return await client.query(`SELECT NOW();`)
                 .then(res => {
                     console.log(res)
+                    res.send(JSON.stringify(res))
                 })
                 .catch (error => console.log(error))
         } catch (error) {console.log(error) }
