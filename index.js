@@ -103,7 +103,7 @@ app.get('/test', async (req, res) => {
         connectionString: conn_str,
         ssl: true
       })
-      pool.query('SELECT NOW()', (err, res) => {
+      pool.query('SELECT * FROM products', (err, res) => {
         res.send(JSON.stringify("OK"))
         console.log(err, res)
         pool.end()
