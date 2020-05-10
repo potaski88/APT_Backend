@@ -343,8 +343,8 @@ async function test() {
                     id, 
                     test
                 ) VALUES (
-                    '"${item.id}"'::integer, 
-                    '"${item.test}"'::text
+                    ${item.id}::integer, 
+                    "${item.test}"::text
                 );
                 `)
                 .then(res => {
