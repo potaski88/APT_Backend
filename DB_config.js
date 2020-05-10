@@ -343,7 +343,7 @@ async function test() {
                 );
                 `)
                 .then(res => {
-            //        return res.rows[0].id
+                    return "OK"
                 })
                 .catch (error => console.log(error))
         } catch (error) {console.log(error)}
@@ -375,7 +375,7 @@ async function test() {
         } 
     })
     */
-    return "OK"
+//    return "OK"
 }
 
 async function showTest() {
