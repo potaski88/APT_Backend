@@ -86,8 +86,7 @@ app.put('/updateOne', async (req, res) => {
 
 app.get('/test', async (req, res) => {
     const input = [
-        {id: 4, name: "hallo"},
-        {id: 5, name: "hallo"},
+
         {id: 6, name: "hallo"},
         {id: 7, name: "hallo"},
         {id: 8, name: "hallo"},
