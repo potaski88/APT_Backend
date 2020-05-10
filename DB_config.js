@@ -319,7 +319,7 @@ async function updateProduct({id, price}) {
 async function test({item}) {
 
 
-
+    return item
 
     const testConnect = {
         user: "ofbugdwpkfgivl",
