@@ -85,31 +85,17 @@ app.put('/updateOne', async (req, res) => {
 
 
 app.get('/test', async (req, res) => {
-    const nodemailer = require('nodemailer');
-
-    const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: 'ampritra@gmail.com',
-        pass: 'matthias88'
-    }
-    });
-
-    const mailOptions = {
-        from: 'ampritra@gmail.com',
-        to: 'ampritra@gmail.com',
-        subject: "Amazon Price Tracker Registration",
-        text: 'Your registration code: ',
-      };
-
-   transporter.sendMail(mailOptions, function(error, info){
-    if (error) {
-        console.log(error);
-    } else {
-        console.log('Email sent: ' + info.response);
-    }
-    }); 
-
+    const sendgridKey = "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"
+    const sgMail = require('@sendgrid/mail');
+    sgMail.setApiKey(sendgridKey);
+    const msg = {
+    to: 'ampritra@gmail.com',
+    from: 'ampritra@gmail.com',
+    subject: 'Sending with Twilio SendGrid is Fun',
+    text: 'and easy to do anywhere, even with Node.js',
+    html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+    };
+    sgMail.send(msg);
     res.send(JSON.stringify("OK"))
     
 })

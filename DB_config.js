@@ -12,8 +12,9 @@ const connection_data = {
 }
 const connectionString = 'postgres://fuhshhcu:BbUmDv8jyTR4yp75rcBVWurwYkAea0up@drona.db.elephantsql.com:5432/fuhshhcu'
 */
+const envConnec = "postgres://ofbugdwpkfgivl:cc6fe18e3014457b6b03884688458dcdc22199990d06b22924710e7213c1df82@ec2-46-137-156-205.eu-west-1.compute.amazonaws.com:5432/d7u7v3ljdp6suo"
+// const envConnec = process.env.DATABASE_URL
 
-const envConnec = process.env.DATABASE_URL
 const db = envConnec.split("/").pop()
 const user = envConnec.split("/")[2].split(":")[0]
 const pw = envConnec.split("/")[2].split(":")[1].split("@")[0]
