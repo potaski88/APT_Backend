@@ -157,7 +157,7 @@ async function createUsersTable() {
         WITH (OIDS = FALSE)
         TABLESPACE pg_default; 
         ALTER TABLE public.users
-            OWNER to "${connection_data.database}";     
+            OWNER to "${connection_data.user}";     
         `);
     } catch (error) {console.log(error)}
     finally{
