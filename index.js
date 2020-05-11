@@ -85,21 +85,20 @@ app.put('/updateOne', async (req, res) => {
 
 
 app.get('/test', async (req, res) => {
-    const input = [
-        {id: 8, name: "hallo"},
-        {id: 9, name: "hallo"},
-        {id: 10, name: "hallo"},
-        {id: 11, name: "hallo"},
-    ]
-    var i;
-    for (i = 0; i < input.length; i++) {
-        const test = await DB_config.test(input[i].id, input[0].name)    
-        if(test){
-    //        res.send(JSON.stringify(test))
-        }else{
-            res.send(JSON.stringify("Failooo"))
-        }
-    }
+    const sendGridKey = "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"
+    
+    const sgMail = require('@sendgrid/mail');
+    sgMail.setApiKey(sendGridKey);
+    const msg = {
+    to: 'ampritra@gmail.com',
+    from: 'ampritra@gmail.com',
+    subject: 'Sending with Twilio SendGrid is Fun',
+    text: 'and easy to do anywhere, even with Node.js',
+    html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+    };
+    sgMail.send(msg);
+
+
     res.send(JSON.stringify("OK"))
     
 })
