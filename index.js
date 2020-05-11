@@ -85,19 +85,7 @@ app.put('/updateOne', async (req, res) => {
 
 
 app.get('/test', async (req, res) => {
-    const sendgridKey = "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"
-    const sgMail = require('@sendgrid/mail');
-    sgMail.setApiKey(sendgridKey);
-    const msg = {
-    to: 'ampritra@gmail.com',
-    from: 'ampritra@gmail.com',
-    subject: 'Sending with Twilio SendGrid is Fun',
-    text: 'and easy to do anywhere, even with Node.js',
-    html: '<strong>and easy to do anywhere, even with Node.js</strong>',
-    };
-    sgMail.send(msg);
-    res.send(JSON.stringify("OK"))
-    
+    res.send(JSON.stringify("OK"))  
 })
 
 app.get('/show', async (req, res) => {
