@@ -1,7 +1,7 @@
 const { Pool, Client } = require('pg')
 const Sequelize = require('sequelize');
 
-
+/*
 const connection_data = {
     user: "fuhshhcu",
     password: "BbUmDv8jyTR4yp75rcBVWurwYkAea0up",
@@ -10,9 +10,10 @@ const connection_data = {
     database: "fuhshhcu",
     omitNull: true
 }
-
 const connectionString = 'postgres://fuhshhcu:BbUmDv8jyTR4yp75rcBVWurwYkAea0up@drona.db.elephantsql.com:5432/fuhshhcu'
+*/
 
+const connection_data = process.env.DATABASE_URL
 
 
 
