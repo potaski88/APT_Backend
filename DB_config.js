@@ -16,10 +16,11 @@ const connectionString = 'postgres://fuhshhcu:BbUmDv8jyTR4yp75rcBVWurwYkAea0up@d
 const envConnec = process.env.DATABASE_URL
 const db = envConnec.split("/").pop()
 const user = envConnec.split("/")[2].split(":")[0]
+const pw = envConnec.split("/")[2].split(":")[1].split("@")[0]
 const host = envConnec.split("/")[2].split(":")[1].split("@")[1]
 const connection_data = {
     user: user,
-    password: "cc6fe18e3014457b6b03884688458dcdc22199990d06b22924710e7213c1df82",
+    password: pw,
     host: host,
     port: 5432,
     database: db,
@@ -51,7 +52,7 @@ async function createALLProductsTable() {
         WITH (OIDS = FALSE)
         TABLESPACE pg_default; 
         ALTER TABLE public."${name}"
-            OWNER to "${connection_data.database}";
+            OWNER to "${connection_data.user}";
         `);
     } catch (error) {console.log(error)}
     finally{
