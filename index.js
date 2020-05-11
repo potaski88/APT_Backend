@@ -86,7 +86,6 @@ app.put('/updateOne', async (req, res) => {
 
 
 app.get('/test', async (req, res) => {
-const Utils = require('../utils.js');
     Utils.sendRegistrationMail("x", 2345)
     res.send(JSON.stringify("OK"))  
 })
