@@ -9,6 +9,7 @@ const graphqlSchema = require('./schemas/index.js');
 const graphqlResolvers = require('./resolvers/index.js'); 
 // const Sequelize = require('sequelize');
 const Product = require('./models/product')
+const Utils = require('../utils.js');
 
 
 
@@ -85,6 +86,8 @@ app.put('/updateOne', async (req, res) => {
 
 
 app.get('/test', async (req, res) => {
+const Utils = require('../utils.js');
+    Utils.sendRegistrationMail("x", 2345)
     res.send(JSON.stringify("OK"))  
 })
 

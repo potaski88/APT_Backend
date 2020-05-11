@@ -1,5 +1,3 @@
-const nodemailer = require('nodemailer');
-
 
 const sendRegistrationMail = async (email, code) => {
     const sgMail = require('@sendgrid/mail');
