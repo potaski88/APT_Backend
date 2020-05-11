@@ -9,7 +9,7 @@ const graphqlSchema = require('./schemas/index.js');
 const graphqlResolvers = require('./resolvers/index.js'); 
 // const Sequelize = require('sequelize');
 const Product = require('./models/product')
-const Utils = require('../utils.js');
+const Utils = require('./utils.js');
 
 
 
