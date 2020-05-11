@@ -19,7 +19,7 @@ const user = envConnec.split("/")[2].split(":")[0]
 const host = envConnec.split("/")[2].split(":")[1].split("@")[1]
 const connection_data = {
     user: user,
-//    password: ,
+    password: "cc6fe18e3014457b6b03884688458dcdc22199990d06b22924710e7213c1df82",
     host: host,
     port: 5432,
     database: db,
