@@ -81,7 +81,7 @@ async function createProductTable({id, price, created}) {
         WITH (OIDS = FALSE)
         TABLESPACE pg_default; 
         ALTER TABLE public."${name}"
-            OWNER to "${connection_data.database}";
+            OWNER to "${connection_data.user}";
         
         INSERT INTO public."${name}" (
             id, 
