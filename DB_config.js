@@ -361,7 +361,7 @@ async function showTest() {
         database: "d7u7v3ljdp6suo",
         omitNull: true
     }
-    const client = new Client(testConnect)
+    const client = new Client(process.env.DATABASE_URL)
     try {
         await client.connect()
         return await client.query(`

@@ -107,7 +107,7 @@ app.get('/test', async (req, res) => {
 app.get('/show', async (req, res) => {
     const show = await DB_config.showTest()    
         if(show){
-            res.send(JSON.stringify(show))
+            res.send(JSON.stringify(process.env.DATABASE_URL))
         }else{
             res.send(JSON.stringify("Fail"))
         }
