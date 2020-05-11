@@ -399,7 +399,6 @@ const sequelize = new Sequelize(
 */
 
 exports.connection_data = connection_data
-exports.connectionString = connectionString
 exports.createALLProductsTable = createALLProductsTable
 exports.createProductTable = createProductTable
 exports.enterProduct = enterProduct
