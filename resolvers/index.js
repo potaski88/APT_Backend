@@ -79,6 +79,17 @@ module.exports = {
         })
     },
 
+
+////////////////////////////////////////////////////////////////
+    testScrape: async (url) =>{
+        const scraped = await Scraper.scrapeProduct(url)
+        if(scraped){
+            return JSON.stringify(scraped) 
+        }else {
+            return "FAIL"
+        }
+    },
+
     enterProduct: async ({url, usr}) => {
         if(url){
             const scraped = await Scraper.scrapeProduct(url)

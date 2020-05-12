@@ -43,6 +43,8 @@ type RootQuery {
     getProductDetails(prodID: Int): [ProductDetails]
     registerUser(email: String, pw: String): String
     confirmUser(code: Int): String
+
+    testScrape(url: String): String
 }
 
 schema {
