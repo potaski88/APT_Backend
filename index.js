@@ -84,6 +84,33 @@ app.put('/updateOne', async (req, res) => {
 
 
 
+
+
+
+app.get('/cheerio', async (req, res) => {
+    const cheerio = require('cheerio')
+    const axios = require('axios')
+
+    const url = "https://www.amazon.de/dp/B00H9I40CA/?coliid=IYUVS7QX8E4K4&colid=2VAR5ZRGOET20&psc=1&ref_=lv_ov_lig_dp_it"
+    try {
+        axios.get(url).then((response) => {
+
+            const $ = cheerio.load(response.data)
+            const txt = $('#price_inside_buybox').text()
+    
+            console.log(txt)
+            res.send(JSON.stringify(txt)) 
+        }) 
+    } catch (error) {
+        res.send(JSON.stringify("error")) 
+    }
+    
+  
+     
+})
+
+
+
 app.get('/test', async (req, res) => {
     try {
         Utils.sendRegistrationMail()
@@ -92,8 +119,7 @@ app.get('/test', async (req, res) => {
     }
     
 
-    res.send(JSON.stringify("OK"))
-    
+    res.send(JSON.stringify("OK"))  
 })
 
 app.get('/show', async (req, res) => {
