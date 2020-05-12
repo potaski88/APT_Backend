@@ -22,9 +22,9 @@ const scrapeProduct =  (url) => {
     })
 }
 
-const scrapePriceOnly =  (url) => {
+const scrapePriceOnly =  (x) => {
     
-    
+    const url = "https://www.amazon.de/dp/1848310870/?coliid=I590P31PNUL38&colid=2VAR5ZRGOET20&psc=1&ref_=lv_ov_lig_dp_it"
     return rp(url)
     .then(function (body) {
 
