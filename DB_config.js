@@ -393,7 +393,7 @@ async function showTest() {
 
 
 //------
-/*
+
 const sequelize = new Sequelize(
     connection_data.database, 
     connection_data.user, 
@@ -408,7 +408,7 @@ const sequelize = new Sequelize(
         idle: 90000
       }
 });
-*/
+
 
 exports.connection_data = connection_data
 exports.createALLProductsTable = createALLProductsTable
@@ -428,4 +428,4 @@ exports.test = test
 exports.showTest = showTest
 
 
-// exports.sequelize = sequelize
+ exports.sequelize = sequelize

@@ -3,8 +3,8 @@ const Utils = require('../utils.js');
 const {Client } = require('pg')
 const Scraper = require('ampritra-scraper');
 const request = require('request');
-// const User = require('../models/user')
-// const Product = require('../models/product')
+const User = require('../models/user')
+const Product = require('../models/product')
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
