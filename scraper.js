@@ -28,8 +28,10 @@ const scrapePriceOnly =  (url) => {
     return rp(url)
     .then(function (body) {
 
-        return "OK"
-        
+        if (body){
+            return "body"
+        } else {return "nobody"}
+
         const parser = new DomParser()
         const dom = parser.parseFromString(body)
         
