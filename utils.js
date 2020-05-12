@@ -11,9 +11,10 @@ const sendRegistrationMail = async () => {
       html: ' ',
     };
     try {
+      console.log(msg)
       await sgMail.send(msg);
     } catch (error) {
-      console.log("error")
+      console.log(error)
     }
     
     
