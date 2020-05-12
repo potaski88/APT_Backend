@@ -5,7 +5,7 @@ const sendRegistrationMail = async () => {
     sgMail.setApiKey(process.env.SENDGRID_KEY);
     const msg = {
       to: "matwolmu@gmail.com",
-      from: 'ampritra@gmail.com',
+      from: 'matwolmu@gmail.com',
       subject: 'Amazon Price Tracker Registration',
       text: 'Your registration code: ',
       html: ' ',
