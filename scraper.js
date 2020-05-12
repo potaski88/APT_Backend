@@ -23,6 +23,8 @@ const scrapeProduct =  (url) => {
 }
 
 const scrapePriceOnly =  (url) => {
+    return "OK"
+    
     return rp(url)
     .then(function (body) {
         const parser = new DomParser()
