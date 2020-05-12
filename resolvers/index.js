@@ -82,7 +82,7 @@ module.exports = {
 
 ////////////////////////////////////////////////////////////////
     testScrape: async (url) =>{
-        const scraped = await Scraper.scrapeProduct(url)
+        const scraped = await Scraper.scrapePriceOnly(url)
         if(scraped){
             return JSON.stringify(scraped) 
         }else {
