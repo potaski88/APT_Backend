@@ -8,7 +8,7 @@ const sendRegistrationMail = async () => {
       from: 'ampritra@gmail.com',
       subject: 'Amazon Price Tracker Registration',
       text: 'Your registration code: ',
-      html: '',
+      html: ' ',
     };
     try {
       sgMail.send(msg);
