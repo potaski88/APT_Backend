@@ -104,22 +104,29 @@ app.get('/cheerio', async (req, res) => {
     } catch (error) {
         res.send(JSON.stringify("error")) 
     }
-    
-  
-     
 })
 
 
 
 app.get('/test', async (req, res) => {
+    const fetch = require('node-fetch');
+//        Utils.sendRegistrationMail()
     try {
-        Utils.sendRegistrationMail()
+        fetch('https://jsonplaceholder.typicode.com/todos/1')
+        .then(response => response.json())
+        .then(json => {
+            console.log(json)
+            res.send(JSON.stringify(json)) 
+        })
+        .catch (error => {
+            console.log(error)
+            res.send(JSON.stringify("Error")) 
+        }) 
     } catch (error) {
         console.log(error)
+        res.send(JSON.stringify("err")) 
     }
-    
 
-    res.send(JSON.stringify("OK"))  
 })
 
 app.get('/show', async (req, res) => {
