@@ -1,16 +1,21 @@
 
-const sendRegistrationMail = async (email, code) => {
+const sendRegistrationMail = async () => {
     const sgMail = require('@sendgrid/mail');
-    sgMail.setApiKey("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");
+    sgMail.setApiKey("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");
 //    sgMail.setApiKey(process.env.SENDGRID_KEY);
     const msg = {
-      to: "matwolmu@gmail.com",
+      to: "ampritra@gmail.com",
       from: 'ampritra@gmail.com',
       subject: 'Amazon Price Tracker Registration',
-      text: 'Your registration code: ' + code,
+      text: 'Your registration code: ',
       html: '',
     };
-    sgMail.send(msg);
+    try {
+      sgMail.send(msg);
+    } catch (error) {
+      console.log("error")
+    }
+    
     
 }
 

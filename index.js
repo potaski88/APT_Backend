@@ -9,7 +9,7 @@ const graphqlSchema = require('./schemas/index.js');
 const graphqlResolvers = require('./resolvers/index.js'); 
 // const Sequelize = require('sequelize');
 const Product = require('./models/product')
-
+const Utils = require('./utils.js');
 
 
 
@@ -85,30 +85,12 @@ app.put('/updateOne', async (req, res) => {
 
 
 app.get('/test', async (req, res) => {
-    const nodemailer = require('nodemailer');
-
-    const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: 'ampritra@gmail.com',
-        pass: 'matthias88'
+    try {
+        Utils.sendRegistrationMail()
+    } catch (error) {
+        console.log(error)
     }
-    });
-
-    const mailOptions = {
-        from: 'ampritra@gmail.com',
-        to: 'ampritra@gmail.com',
-        subject: "Amazon Price Tracker Registration",
-        text: 'Your registration code: ',
-      };
-
-   transporter.sendMail(mailOptions, function(error, info){
-    if (error) {
-        console.log(error);
-    } else {
-        console.log('Email sent: ' + info.response);
-    }
-    }); 
+    
 
     res.send(JSON.stringify("OK"))
     
