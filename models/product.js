@@ -1,6 +1,6 @@
 const {Sequelize, DataTypes} = require('sequelize');
 const DB_config = require('../DB_config.js');
-/*
+
 
 const db = DB_config.sequelize
 
@@ -33,4 +33,3 @@ const Product = db.define('product', {
 
 module.exports = Product;
 
-*/
