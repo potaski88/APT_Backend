@@ -144,7 +144,7 @@ app.get('/pupp', async (req, res) => {
     
     try {
         (async () => {
-            const browser = await puppeteer.launch();
+            const browser = await puppeteer.launch({ args: ['--no-sandbox'] } );
             const page = await browser.newPage();
 
             await page.goto(url, { waitUntil: 'networkidle0' });
