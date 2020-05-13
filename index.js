@@ -138,6 +138,36 @@ app.get('/test', async (req, res) => {
 
 
 
+app.get('/pupp', async (req, res) => {
+    const puppeteer = require('puppeteer');
+    const url = "https://www.amazon.de/dp/B00H9I40CA/?coliid=IYUVS7QX8E4K4&colid=2VAR5ZRGOET20&psc=1&ref_=lv_ov_lig_dp_it"
+    
+    try {
+        (async () => {
+            const browser = await puppeteer.launch();
+            const page = await browser.newPage();
+
+            await page.goto(url, { waitUntil: 'networkidle0' });
+
+            const renderedContent = await page.evaluate(() => new XMLSerializer().serializeToString(document));
+
+            console.log(renderedContent);
+            res.send(renderedContent)
+            await browser.close();
+          })();
+        
+    } catch (error) {
+        res.send(JSON.stringify("error"))
+    }
+    
+
+})
+
+
+
+
+
+
 
 
 
