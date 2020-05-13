@@ -92,6 +92,12 @@ module.exports = {
         }
     },
 
+    ////////////////////////
+    enterProductTEST: async ({url, usr}) => {
+        const scraped = await Scraper.scrapeProduct(url)
+        return JSON.stringify(scraped)
+    },
+
     enterProduct: async ({url, usr}) => {
         if(url){
             const scraped = await Scraper.scrapeProduct(url)
