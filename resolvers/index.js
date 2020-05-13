@@ -93,7 +93,10 @@ module.exports = {
     },
 
     ////////////////////////
-    enterProductTEST: async ({url, usr}) => {
+    enterProductTEST: async ({url}) => {
+        const DomParser = require('dom-parser');
+        const fetch = require('node-fetch');
+
         const scraped = await Scraper.scrapeProduct(url)
         return JSON.stringify(scraped)
     },
