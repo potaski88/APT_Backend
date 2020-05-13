@@ -97,8 +97,17 @@ module.exports = {
         const DomParser = require('dom-parser');
         const fetch = require('node-fetch');
 
+    //    const scraped = await Scraper.scrapePriceOnly(url)
+        fetch("https://pupptest.herokuapp.com/pupp")
+        .then(response => {
+            return JSON.stringify(response) 
+        })
+        .catch(err => {
+            return JSON.stringify("ERROR") 
+        })
+    
 
-        const scraped = await Scraper.scrapePriceOnly(url)
+
         return JSON.stringify(scraped)
     },
 

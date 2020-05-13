@@ -29,7 +29,7 @@ app.use(function(req, res, next) {
     }
     next(); 
 });
-
+///////////////////////////////////////////////////
 //app.use(auth);
 
 app.use('/graphql', graphqlHttp({
@@ -186,7 +186,7 @@ app.get('/show', async (req, res) => {
 
 
 
-const port = process.env.PORT || 5001;
+const port = process.env.PORT || 5002;
 app.listen(port, () => console.log("running!!"));
 
 
