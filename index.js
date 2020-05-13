@@ -10,7 +10,7 @@ const graphqlResolvers = require('./resolvers/index.js');
 // const Sequelize = require('sequelize');
 const Product = require('./models/product')
 const Utils = require('./utils.js');
-
+const Scraper = require('ampritra-scraper');
 
 
 
@@ -49,6 +49,7 @@ app.get('/all', async (req, res) => {
     }
 )
 
+
 app.put('/update', async (req, res) => {
     const newData = req.body
     newData.forEach(async item => {
@@ -58,6 +59,7 @@ app.put('/update', async (req, res) => {
         })
         res.send(JSON.stringify("OK"))
 })
+
 
 app.put('/updateOne', async (req, res) => {
     const newData = req.body
@@ -83,7 +85,7 @@ app.put('/updateOne', async (req, res) => {
 
 
 
-
+/////////////////////////////////////////////////
 
 
 
@@ -121,52 +123,16 @@ app.get('/cheerio', async (req, res) => {
 
 
 app.get('/test', async (req, res) => {
-    const fetch = require('node-fetch');
-//        Utils.sendRegistrationMail()
-    const rp = require('request-promise');
-    const DomParser = require('dom-parser');
-    const Scraper = require('./scraper.js');
-
-    var options = {
-        uri: 'https://www.amazon.de/dp/B00H9I40CA/?coliid=IYUVS7QX8E4K4&colid=2VAR5ZRGOET20&psc=1&ref_=lv_ov_lig_dp_it',
-        headers: {
-            'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:66.0) Gecko/20100101 Firefox/66.0", "Accept-Encoding":"gzip, deflate", "Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", "DNT":"1","Connection":"close", "Upgrade-Insecure-Requests":"1"
-        },
-//        json: true // Automatically parses the JSON string in the response
-    };
-
+    const url = "https://www.amazon.de/dp/B00H9I40CA/?coliid=IYUVS7QX8E4K4&colid=2VAR5ZRGOET20&psc=1&ref_=lv_ov_lig_dp_it"
+    
     try {
-
-        fetch(options.uri, {
-            method: 'get',
-    //        body:    JSON.stringify(body),
-            headers: options.headers,
-        })
-        .then(x => x.text())
-        .then(html => {
-            const parser = new DomParser()
-            const dom = parser.parseFromString(html)
-            const price = Scraper.getPrice(dom)
-            console.log(price)
-            res.send(JSON.stringify(price)) 
-        })
-        
-        /*
-        rp(options)
-        .then(function (html) {
-            console.log(html);
-            res.send(html) 
-        })
-        .catch(function (err) {
-            console.log(err)
-            res.send(JSON.stringify("err")) 
-        });
-        */
-        
+        const price = await Scraper.scrapePriceOnly(url)
+        console.log(price)
+        res.send(JSON.stringify(price))
     } catch (error) {
-        console.log(error)
-        res.send(JSON.stringify("err")) 
+        res.send(JSON.stringify("error"))
     }
+    
 
 })
 
