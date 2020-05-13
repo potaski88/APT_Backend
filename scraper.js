@@ -28,7 +28,7 @@ const scrapePriceOnly =  (x) => {
     return rp(url)
     .then(function (body) {
 
-        return JSON.stringify(body)
+    //    return JSON.stringify(body)
 
         const parser = new DomParser()
         const dom = parser.parseFromString(body)
@@ -140,6 +140,7 @@ function startsWith(str, word) {
 
 module.exports = {
     scrapeProduct: scrapeProduct,  
-	scrapePriceOnly: scrapePriceOnly
+    scrapePriceOnly: scrapePriceOnly,
+    getPrice: getPrice
 }
 

@@ -125,6 +125,7 @@ app.get('/test', async (req, res) => {
 //        Utils.sendRegistrationMail()
     const rp = require('request-promise');
     const DomParser = require('dom-parser');
+    const Scraper = require('./scraper.js');
 
     var options = {
         uri: 'https://www.amazon.de/dp/B00H9I40CA/?coliid=IYUVS7QX8E4K4&colid=2VAR5ZRGOET20&psc=1&ref_=lv_ov_lig_dp_it',
@@ -141,10 +142,13 @@ app.get('/test', async (req, res) => {
     //        body:    JSON.stringify(body),
             headers: options.headers,
         })
-        .then(res => res.text())
+        .then(x => x.text())
         .then(html => {
-            console.log(html)
-            res.send(html) 
+            const parser = new DomParser()
+            const dom = parser.parseFromString(html)
+            const price = Scraper.getPrice(dom)
+            console.log(price)
+            res.send(JSON.stringify(price)) 
         })
         
         /*
