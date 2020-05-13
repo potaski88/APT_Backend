@@ -90,33 +90,22 @@ app.put('/updateOne', async (req, res) => {
 app.get('/cheerio', async (req, res) => {
     const cheerio = require('cheerio')
     const axios = require('axios')
-
-    const url = "https://www.amazon.de/dp/B00H9I40CA/?coliid=IYUVS7QX8E4K4&colid=2VAR5ZRGOET20&psc=1&ref_=lv_ov_lig_dp_it"
-    try {
-        axios.get(url).then((response) => {
-
-            const $ = cheerio.load(response.data)
-            const txt = $('#price_inside_buybox').text()
-    
-            console.log(txt)
-            res.send(JSON.stringify(txt)) 
-        }) 
-    } catch (error) {
-        res.send(JSON.stringify("error")) 
-    }
-})
-
-
-
-app.get('/test', async (req, res) => {
     const fetch = require('node-fetch');
-//        Utils.sendRegistrationMail()
+
+    const url = "https://www.amazon.de/dp/B07TL8SBH3/ref=sspa_dk_detail_1?psc=1&pd_rd_i=B07TL8SBH3&pd_rd_w=nLfTD&pf_rd_p=d3e24f85-c2f2-4959-bef4-3acc5e4e81dc&pd_rd_wg=TuPMi&pf_rd_r=C32WJ0F77DST3XQ8Z2YY&pd_rd_r=78e28d2b-3b42-4c51-abe3-8b4e2859f78d&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyRFhES1RLQzc1M1VEJmVuY3J5cHRlZElkPUEwNjc5NjQ5MUNLUklDV01LQllSMSZlbmNyeXB0ZWRBZElkPUEwMzUxMjAwMTdON0hSRjhaSjQ0QSZ3aWRnZXROYW1lPXNwX2RldGFpbCZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU="
+
     try {
-        fetch('https://jsonplaceholder.typicode.com/todos/1')
-        .then(response => response.json())
+        fetch(url)
+        .then(response => response.text())
         .then(json => {
             console.log(json)
-            res.send(JSON.stringify(json)) 
+            res.send(json) 
+
+
+    //        const $ = cheerio.load(json.data)
+    //        const txt = $('#price_inside_buybox').text()
+
+    //        res.send(JSON.stringify(txt)) 
         })
         .catch (error => {
             console.log(error)
@@ -128,6 +117,60 @@ app.get('/test', async (req, res) => {
     }
 
 })
+
+
+
+app.get('/test', async (req, res) => {
+    const fetch = require('node-fetch');
+//        Utils.sendRegistrationMail()
+    const rp = require('request-promise');
+    const DomParser = require('dom-parser');
+
+    var options = {
+        uri: 'https://www.amazon.de/dp/B00H9I40CA/?coliid=IYUVS7QX8E4K4&colid=2VAR5ZRGOET20&psc=1&ref_=lv_ov_lig_dp_it',
+        headers: {
+            'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:66.0) Gecko/20100101 Firefox/66.0", "Accept-Encoding":"gzip, deflate", "Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", "DNT":"1","Connection":"close", "Upgrade-Insecure-Requests":"1"
+        },
+//        json: true // Automatically parses the JSON string in the response
+    };
+
+    try {
+
+        fetch(options.uri, {
+            method: 'get',
+    //        body:    JSON.stringify(body),
+            headers: options.headers,
+        })
+        .then(res => res.text())
+        .then(html => {
+            console.log(html)
+            res.send(html) 
+        })
+        
+        /*
+        rp(options)
+        .then(function (html) {
+            console.log(html);
+            res.send(html) 
+        })
+        .catch(function (err) {
+            console.log(err)
+            res.send(JSON.stringify("err")) 
+        });
+        */
+        
+    } catch (error) {
+        console.log(error)
+        res.send(JSON.stringify("err")) 
+    }
+
+})
+
+
+
+
+
+
 
 app.get('/show', async (req, res) => {
     const show = await DB_config.showTest()    

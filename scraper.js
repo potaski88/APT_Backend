@@ -34,7 +34,6 @@ const scrapePriceOnly =  (x) => {
         const dom = parser.parseFromString(body)
         
         return getPrice(dom)
-   
     })
     .catch(err => {
         console.log(err)
