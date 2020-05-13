@@ -98,17 +98,17 @@ module.exports = {
         const fetch = require('node-fetch');
 
     //    const scraped = await Scraper.scrapePriceOnly(url)
-    const scraped = await fetch("https://pupptest.herokuapp.com/pupp")
+        return await fetch("https://pupptest.herokuapp.com/pupp")
         .then(response => {
-            return response 
+            console.log(response.json())
+            return JSON.stringify("response")
+       
         })
         .catch(err => {
             return JSON.stringify("ERROR") 
         })
     
-
-
-        return JSON.stringify(scraped)
+    //    return JSON.stringify(scraped)
     },
 
     enterProduct: async ({url, usr}) => {
