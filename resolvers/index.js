@@ -97,7 +97,8 @@ module.exports = {
         const DomParser = require('dom-parser');
         const fetch = require('node-fetch');
 
-        const scraped = await Scraper.scrapeProduct(url)
+
+        const scraped = await Scraper.scrapePriceOnly(url)
         return JSON.stringify(scraped)
     },
 
