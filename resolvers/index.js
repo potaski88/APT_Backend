@@ -98,9 +98,9 @@ module.exports = {
         const fetch = require('node-fetch');
 
     //    const scraped = await Scraper.scrapePriceOnly(url)
-        fetch("https://pupptest.herokuapp.com/pupp")
+    const scraped = await fetch("https://pupptest.herokuapp.com/pupp")
         .then(response => {
-            return JSON.stringify(response) 
+            return response 
         })
         .catch(err => {
             return JSON.stringify("ERROR") 
