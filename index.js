@@ -176,7 +176,7 @@ app.get('/email', async (req, res) => {
     try {
         await Utils.sendRegistrationMail()
         .then(res.send(JSON.stringify("OK")))
-        .catch()
+        .catch(err => console.log(err))
     } catch (error) {
         res.send(JSON.stringify("error"))
     }
