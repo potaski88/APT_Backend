@@ -173,9 +173,14 @@ app.get('/pupp', async (req, res) => {
 
 
 app.get('/email', async (req, res) => {
-    await Utils.sendRegistrationMail()
-    .then(res.send(JSON.stringify("OK")))
-    .catch(res.send(JSON.stringify("error")))
+    try {
+        await Utils.sendRegistrationMail()
+        .then(res.send(JSON.stringify("OK")))
+        .catch(res.send(JSON.stringify("error")))
+    } catch (error) {
+        res.send(JSON.stringify("error"))
+    }
+    
 })
 
 
