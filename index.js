@@ -29,8 +29,14 @@ app.use(function(req, res, next) {
     }
     next(); 
 });
+
+
 ///////////////////////////////////////////////////
 //app.use(auth);
+///////////////////////////////////////////////////
+
+
+
 
 app.use('/graphql', graphqlHttp({
     schema: graphqlSchema,

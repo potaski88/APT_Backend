@@ -100,9 +100,11 @@ module.exports = {
     //    const scraped = await Scraper.scrapePriceOnly(url)
         return await fetch("https://pupptest.herokuapp.com/pupp")
         .then(response => {
-            console.log(response.json())
-            return JSON.stringify("response")
-       
+            return response.json()
+        })
+        .then(x => {
+            console.log(x)
+            return JSON.stringify(x)
         })
         .catch(err => {
             return JSON.stringify("ERROR") 
