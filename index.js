@@ -11,8 +11,8 @@ const graphqlResolvers = require('./resolvers/index.js');
 const Product = require('./models/product')
 const Utils = require('./utils.js');
 const Scraper = require('ampritra-scraper');
-
-
+const fetch = require('node-fetch');
+const axios = require('axios');
 
 
 
@@ -98,7 +98,7 @@ app.put('/updateOne', async (req, res) => {
 app.get('/cheerio', async (req, res) => {
     const cheerio = require('cheerio')
     const axios = require('axios')
-    const fetch = require('node-fetch');
+    
 
     const url = "https://www.amazon.de/dp/B07TL8SBH3/ref=sspa_dk_detail_1?psc=1&pd_rd_i=B07TL8SBH3&pd_rd_w=nLfTD&pf_rd_p=d3e24f85-c2f2-4959-bef4-3acc5e4e81dc&pd_rd_wg=TuPMi&pf_rd_r=C32WJ0F77DST3XQ8Z2YY&pd_rd_r=78e28d2b-3b42-4c51-abe3-8b4e2859f78d&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyRFhES1RLQzc1M1VEJmVuY3J5cHRlZElkPUEwNjc5NjQ5MUNLUklDV01LQllSMSZlbmNyeXB0ZWRBZElkPUEwMzUxMjAwMTdON0hSRjhaSjQ0QSZ3aWRnZXROYW1lPXNwX2RldGFpbCZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU="
 
@@ -173,14 +173,33 @@ app.get('/pupp', async (req, res) => {
 
 
 app.get('/email', async (req, res) => {
-    try {
-        await Utils.sendRegistrationMail()
-        .then(res.send(JSON.stringify("OK")))
-        .catch(err => console.log(err))
-    } catch (error) {
-        res.send(JSON.stringify("error"))
-    }
-    
+    const key = "98d135eded09f44e759c40544704ab5c200c979b"
+    const SparkPost = require('sparkpost');
+    const client = new SparkPost(key);
+
+    client.transmissions.send({
+        options: {
+          sandbox: true
+        },
+        content: {
+          from: 'testing@sparkpostbox.com',
+          subject: 'Hello, World!',
+          html:'<html><body><p>Testing SparkPost - the world\'s most awesomest email service!</p></body></html>'
+        },
+        recipients: [
+          {address: 'ampritra@gmail.com'}
+        ]
+      })
+      .then(data => {
+        console.log('Woohoo! You just sent your first mailing!');
+        console.log(data);
+        res.send(JSON.stringify("Sent"))
+      })
+      .catch(err => {
+        console.log('Whoops! Something went wrong');
+        console.log(err);
+        res.send(JSON.stringify("Fail"))
+      });
 })
 
 
@@ -197,6 +216,60 @@ app.get('/show', async (req, res) => {
 })
 
 
+////////////////////////////////////////////////////
+app.get('/localTest', async (req, res) => {
+    const rawURL = "https://www.amazon.de/dp/B00H9I40CA/?coliid=IYUVS7QX8E4K4&colid=2VAR5ZRGOET20&psc=1&ref_=lv_ov_lig_dp_it"
+    const url = encodeURIComponent(rawURL)
+
+    const target = "https://pupptest.herokuapp.com/"
+    const targetLocal = "localhost:5100/"
+    
+    console.log(url)
+    const body = { url: url  };
+    try {
+       fetch(target + 'getPrice', {
+            method: 'post',
+            body:    JSON.stringify(body),
+            headers: { 'Content-Type': 'application/json' },
+        })
+    //    .then(res => {
+    //        return res.json()
+    //    })
+        .then(json => {
+            console.log(json)
+            res.send(json)
+        })
+        .catch(err => console.log(err))
+    } catch (error) {
+        res.send("error")
+    }
+    
+})
+
+app.get('/localTest2', async (req, res) => {
+    const target = "https://pupptest.herokuapp.com/getPrice"
+    const targetLocal = "http://localhost:5100/getPrice"
+    
+    const rawURL = "https://www.amazon.de/dp/B00H9I40CA/?coliid=IYUVS7QX8E4K4&colid=2VAR5ZRGOET20&psc=1&ref_=lv_ov_lig_dp_it"
+
+    const url = encodeURIComponent(rawURL)
+    try {
+        axios.post(target, {
+            url: url
+          })
+
+          .then(function (response) {
+            console.log(response.data);
+            res.send(response.data)
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    } catch (error) {
+        res.send("error")
+    }
+    
+})
 
 
 
