@@ -187,7 +187,7 @@ app.get('/email', async (req, res) => {
           html:'<html><body><p>Testing SparkPost - the world\'s most awesomest email service!</p></body></html>'
         },
         recipients: [
-          {address: 'ampritra@gmail.com'}
+          {address: 'matwolmu@gmail.com'}
         ]
       })
       .then(data => {
