@@ -178,13 +178,13 @@ app.get('/email', async (req, res) => {
 var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'ampritra@gmail.com',
+    user: 'matwolmu@gmail.com',
     pass: 'matthias88'
   }
 });
 
 var mailOptions = {
-  from: 'ampritra@gmail.com',
+  from: 'matwolmu@gmail.com',
   to: 'matwolmu@gmail.com',
   subject: 'Sending Email using Node.js',
   text: 'That was easy!'
