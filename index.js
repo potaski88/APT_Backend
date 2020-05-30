@@ -173,33 +173,30 @@ app.get('/pupp', async (req, res) => {
 
 
 app.get('/email', async (req, res) => {
-    const key = "98d135eded09f44e759c40544704ab5c200c979b"
-    const SparkPost = require('sparkpost');
-    const client = new SparkPost(key);
+    var nodemailer = require('nodemailer');
+    var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'ampritra@gmail.com',
+        pass: 'matthias88'
+    }
+    });
 
-    client.transmissions.send({
-        options: {
-          sandbox: true
-        },
-        content: {
-          from: 'testing@sparkpostbox.com',
-          subject: 'Hello, World!',
-          html:'<html><body><p>Testing SparkPost - the world\'s most awesomest email service!</p></body></html>'
-        },
-        recipients: [
-          {address: 'ampritra@gmail.com'}
-        ]
-      })
-      .then(data => {
-        console.log('Woohoo! You just sent your first mailing!');
-        console.log(data);
-        res.send(JSON.stringify("Sent"))
-      })
-      .catch(err => {
-        console.log('Whoops! Something went wrong');
-        console.log(err);
-        res.send(JSON.stringify("Fail"))
-      });
+    var mailOptions = {
+    from: 'ampritra@gmail.com',
+    to: 'matwolmu@gmail.com',
+    subject: 'Sending Email using Node.js',
+    text: 'That was easy!'
+    };
+
+    transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+        console.log(error);
+    } else {
+        console.log('Email sent: ' + info.response);
+        res.send("OK")
+    }
+    });
 })
 
 
