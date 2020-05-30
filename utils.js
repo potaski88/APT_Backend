@@ -1,26 +1,29 @@
 
 const sendRegistrationMail = async () => {
-    const sgMail = require('@sendgrid/mail');
+  var nodemailer = require('nodemailer');
+  var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+      user: 'ampritra@gmail.com',
+      pass: 'matthias88'
+  }
+  });
 
-    sgMail.setApiKey(process.env.SENDGRID_KEY);
-    const msg = {
-      to: "matwolmu@gmail.com",
-      from: 'ampritra@gmail.com',
-      subject: 'Amazon Price Tracker Registration',
-      text: 'Your registration code: ',
-      html: ' ',
-    };
-    try {
-      console.log(msg)
-      sgMail.send(msg).then(() => {
-        console.log('Message sent')
-    }).catch((error) => {
-        console.log(error.response.body)
-        // console.log(error.response.body.errors[0].message)
-    })
-    } catch (error) {
-      console.log(error)
-    }
+  var mailOptions = {
+  from: 'ampritra@gmail.com',
+  to: 'matwolmu@gmail.com',
+  subject: 'Sending Email using Node.js',
+  text: 'That was easy!'
+  };
+
+  transporter.sendMail(mailOptions, function(error, info){
+  if (error) {
+      console.log(error);
+  } else {
+      console.log('Email sent: ' + info.response);
+      res.send("OK")
+  }
+  });
     
     
 }
