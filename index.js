@@ -271,9 +271,9 @@ app.get('/localTest2', async (req, res) => {
 
 
 app.get('/gator', async (req, res) => {
-    const target = "http://potaski.space/email/"
+    const target = "http://potaski.space/api/"
     try {
-        axios.post(target, {
+        axios.get(target, {
             email: "matwolmu@gmail.com"
           })
           .then(function (response) {
