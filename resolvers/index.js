@@ -195,13 +195,18 @@ module.exports = {
         } else {
             console.log('doesnt exist yet');
             const code = Math.floor((Math.random()*10000) + 1)
-            Utils.sendRegistrationMail(email, code)
+            await Utils.sendRegistrationMail(email, code)
+            return "OK"  
+
+
+            /*
             const hashedPW = await bcrypt.hash(pw, 12)
             const enteredUser = await DB_config.enterUser(email, hashedPW, code);
             if(enteredUser){
     //            console.log(enteredUser)
                 return "OK"  
             }
+            */
         }
     },
 

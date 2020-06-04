@@ -4,13 +4,13 @@ const sendRegistrationMail = async (email, code) => {
   const target = "http://potaski.space/email/"
   try {
       axios.post(target, {
-        //  email: "matwolmu@gmail.com"
-        email: email,
+          email: "matwolmu@gmail.com",
+    //    email: email,
         code: code
         })
         .then(function (response) {
           console.log(response.data);
-          return response.data
+      //    return response.data
         })
         .catch(function (error) {
           console.log(error);
