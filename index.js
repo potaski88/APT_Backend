@@ -256,7 +256,6 @@ app.get('/localTest2', async (req, res) => {
         axios.post(target, {
             url: url
           })
-
           .then(function (response) {
             console.log(response.data);
             res.send(response.data)
@@ -267,7 +266,26 @@ app.get('/localTest2', async (req, res) => {
     } catch (error) {
         res.send("error")
     }
-    
+})
+
+
+
+app.get('/gator', async (req, res) => {
+    const target = "http://potaski.space/email/"
+    try {
+        axios.post(target, {
+            email: "matwolmu@gmail.com"
+          })
+          .then(function (response) {
+            console.log(response.data);
+            res.send(response.data)
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    } catch (error) {
+        res.send("error")
+    }
 })
 
 
