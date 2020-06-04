@@ -46,6 +46,8 @@ type RootQuery {
 
     testScrape(url: String): String
     enterProductTEST(url: String): String
+    registerUserTEST(email: String, pw: String): String
+    
 }
 
 schema {

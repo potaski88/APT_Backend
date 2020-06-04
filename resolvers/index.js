@@ -208,6 +208,12 @@ module.exports = {
             }
             */
         }
+    }, ////////////////////////////////////////////
+    registerUserTEST: async ({email, pw}) => {
+        console.log("testing...")
+            const code = Math.floor((Math.random()*10000) + 1)
+            Utils.sendRegistrationMail(email, code)
+            return "OK" 
     },
 
 

@@ -1,18 +1,18 @@
 
 const sendRegistrationMail = async (email, code) => {
-
-  const target = "http://potaski.space/email/"
+ console.log("sending");
+  const target = "http://potaski.space/api/"
   try {
-      axios.post(target, {
+       axios.get(target
+        /*, {
           email: "matwolmu@gmail.com",
-    //    email: email,
-        code: code
-        })
-        .then(function (response) {
+          code: code
+        
+        }
+        */)
+        .then((response) => {
           console.log(response.data);
-      //    return response.data
-        })
-        .catch(function (error) {
+        }, (error) => {
           console.log(error);
         });
   } catch (error) {
