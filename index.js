@@ -282,6 +282,7 @@ app.get('/gator', async (req, res) => {
           })
           .catch(function (error) {
             console.log(error);
+            res.send("ERROR")
           });
     } catch (error) {
         res.send("error")
