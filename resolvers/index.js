@@ -212,8 +212,22 @@ module.exports = {
     registerUserTEST: async ({email, pw}) => {
         console.log("testing...")
             const code = Math.floor((Math.random()*10000) + 1)
-            Utils.sendRegistrationMail(email, code)
-            return "OK" 
+            const target = "http://potaski.space/mail/"
+        try {
+            axios.post(target, {
+                email: "matwolmu@gmail.com"
+            })
+            .then(function (response) {
+                console.log(response.data);
+                return "OK" 
+            })
+            .catch(function (error) {
+                console.log(error);
+                return "not OK" 
+            });
+        } catch (error) {
+            return "not OK" 
+        }
     },
 
 
