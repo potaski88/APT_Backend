@@ -7,7 +7,7 @@ const User = require('../models/user')
 const Product = require('../models/product')
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-
+const axios = require('axios');
 // const Scraper = require('ampritra-scraper');
 const Scraper = require('../scraper.js');
 
@@ -210,13 +210,14 @@ module.exports = {
         }
     }, ////////////////////////////////////////////
     registerUserTEST: async ({email, pw}) => {
-        console.log("testing...")
             const code = Math.floor((Math.random()*10000) + 1)
-            const target = "http://potaski.space/mail/"
+            const target = "http://potaski.space/api/"
         try {
-            axios.post(target, {
+            return axios.get(target
+                /*, {
                 email: "matwolmu@gmail.com"
-            })
+            }
+            */)
             .then(function (response) {
                 console.log(response.data);
                 return "OK" 
@@ -226,7 +227,8 @@ module.exports = {
                 return "not OK" 
             });
         } catch (error) {
-            return "not OK" 
+            console.log(error)
+            return "not " 
         }
     },
 
