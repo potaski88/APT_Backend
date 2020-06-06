@@ -195,7 +195,7 @@ module.exports = {
             const code = Math.floor((Math.random()*10000) + 1)
             const target = "http://potaski.space/api/"
             try {
-                axios.post(target, {
+                return axios.post(target, {
                     email: email,
                     code: code
                 })
