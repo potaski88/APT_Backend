@@ -93,7 +93,7 @@ module.exports = {
     },
 
     ////////////////////////
-    enterProductTEST: async ({rawURL}) => {
+    enterProductTEST: async ({rawURL, usr}) => {
         const target = "https://pupptest.herokuapp.com/getInfo"
         const url = encodeURIComponent(rawURL)
         try {
