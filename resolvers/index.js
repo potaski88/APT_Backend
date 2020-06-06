@@ -93,10 +93,8 @@ module.exports = {
     },
 
     ////////////////////////
-    enterProductTEST: async ({url}) => {
-        const DomParser = require('dom-parser');
-        const fetch = require('node-fetch');
-
+    enterProductTEST: async ({rawURL}) => {
+/*
     //    const scraped = await Scraper.scrapePriceOnly(url)
         return await fetch("https://pupptest.herokuapp.com/pupp")
         .then(response => {
@@ -109,8 +107,24 @@ module.exports = {
         .catch(err => {
             return JSON.stringify("ERROR") 
         })
-    
-    //    return JSON.stringify(scraped)
+*/
+        const target = "https://pupptest.herokuapp.com/getInfo"
+        const url = encodeURIComponent(rawURL)
+        try {
+            return axios.post(target, {
+                url: url
+              })
+              .then(function (response) {
+                console.log(response.data);
+                return JSON.stringify(response.data)
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+        } catch (error) {
+            console.log(error)
+            return "error"
+        }
     },
 
     enterProduct: async ({url, usr}) => {
@@ -221,6 +235,7 @@ module.exports = {
             } 
         }
     }, ////////////////////////////////////////////
+    /*
     registerUserTEST: async ({email, pw}) => {
         const code = Math.floor((Math.random()*10000) + 1)
         const target = "http://potaski.space/api/"
@@ -242,7 +257,7 @@ module.exports = {
             return "error" 
         }
     },
-
+*/
 
     confirmUser: async ({code}) => {
         const confirmed = await DB_config.confirmUser(code);
