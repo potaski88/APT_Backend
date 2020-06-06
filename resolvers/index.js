@@ -193,29 +193,42 @@ module.exports = {
             return 'already exists'
 //            console.log(existingUser)
         } else {
-            console.log('doesnt exist yet');
             const code = Math.floor((Math.random()*10000) + 1)
-            await Utils.sendRegistrationMail(email, code)
-            return "OK"  
-
-
-            /*
-            const hashedPW = await bcrypt.hash(pw, 12)
-            const enteredUser = await DB_config.enterUser(email, hashedPW, code);
-            if(enteredUser){
-    //            console.log(enteredUser)
-                return "OK"  
-            }
-            */
+            const target = "http://potaski.space/api/"
+            try {
+                return axios.post(target, {
+                    email: "matwolmu@gmail.com",
+                    code: code
+                })
+                .then(function (response) {
+                    console.log(response.data);
+                    const hashedPW = await bcrypt.hash(pw, 12)
+                    const enteredUser = await DB_config.enterUser(email, hashedPW, code);
+                    if(enteredUser){
+                        console.log(enteredUser)
+                        return "OK"  
+                    }else {
+                        console.log("user not entered into DB")
+                        return "not OK" 
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                    return "not OK" 
+                });
+            } catch (error) {
+                console.log(error)
+                return "error" 
+            } 
         }
     }, ////////////////////////////////////////////
     registerUserTEST: async ({email, pw}) => {
-            const code = Math.floor((Math.random()*10000) + 1)
-            const target = "http://potaski.space/api/"
+        const code = Math.floor((Math.random()*10000) + 1)
+        const target = "http://potaski.space/api/"
         try {
             return axios.post(target, {
-                "email": "matwolmu@gmail.com",
-                "code": code
+                email: "matwolmu@gmail.com",
+                code: code
             })
             .then(function (response) {
                 console.log(response.data);
@@ -227,7 +240,7 @@ module.exports = {
             });
         } catch (error) {
             console.log(error)
-            return "not " 
+            return "error" 
         }
     },
 
