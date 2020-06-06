@@ -214,7 +214,8 @@ module.exports = {
             const target = "http://potaski.space/api/"
         try {
             return axios.post(target, {
-                email: "matwolmu@gmail.com"
+                email: "matwolmu@gmail.com",
+                code: code
             }
             )
             .then(function (response) {
