@@ -94,24 +94,10 @@ module.exports = {
 
     ////////////////////////
     enterProductTEST: async ({rawURL}) => {
-/*
-    //    const scraped = await Scraper.scrapePriceOnly(url)
-        return await fetch("https://pupptest.herokuapp.com/pupp")
-        .then(response => {
-            return response.json()
-        })
-        .then(x => {
-            console.log(x)
-            return JSON.stringify(x)
-        })
-        .catch(err => {
-            return JSON.stringify("ERROR") 
-        })
-*/
         const target = "https://pupptest.herokuapp.com/getInfo"
         const url = encodeURIComponent(rawURL)
         try {
-            return axios.post(target, {
+            const scraped = await axios.post(target, {
                 url: url
               })
               .then(function (response) {
@@ -121,6 +107,37 @@ module.exports = {
               .catch(function (error) {
                 console.log(error);
               });
+            let today = new Date().toISOString().slice(0, 10)
+            newEntry =  { 
+                url: url,
+                usr: usr,
+                title: scraped.title,
+                price: scraped.price,
+                img: scraped.imageURL,
+                created: today             
+            }
+            const entered = await DB_config.enterProduct(newEntry)
+            .then(res => {
+                return {
+                    id: res,
+                    usr: newEntry.usr,
+                    url: url,
+                    title: scraped.title,
+                    price: "" + scraped.price,
+                    img: scraped.imageURL,   
+                }
+            })
+            .catch(err => {console.log(err)})
+            await DB_config.createProductTable({
+                id: "" + entered.id, 
+                price: entered.price,
+                created: today
+            })
+            .then(res => {
+                return res
+            })
+            .catch(err => {console.log(err)})
+            return entered
         } catch (error) {
             console.log(error)
             return "error"

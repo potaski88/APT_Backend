@@ -48,7 +48,7 @@ type RootQuery {
     confirmUser(code: Int): String
 
     testScrape(url: String): String
-    enterProductTEST(rawURL: String): ProducTEST
+    enterProductTEST(rawURL: String): Product
     registerUserTEST(email: String, pw: String): String
     
 }
