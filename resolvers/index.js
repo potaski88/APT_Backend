@@ -116,7 +116,7 @@ module.exports = {
               })
               .then(function (response) {
                 console.log(response.data);
-                return JSON.stringify(response.data)
+                return response.data
               })
               .catch(function (error) {
                 console.log(error);
@@ -126,6 +126,9 @@ module.exports = {
             return "error"
         }
     },
+
+
+
 
     enterProduct: async ({url, usr}) => {
         if(url){

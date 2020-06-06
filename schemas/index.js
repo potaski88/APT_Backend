@@ -10,8 +10,11 @@ type Product {
     price: String
     img: String
     created: String
-    
-
+}
+type ProducTEST {
+    title: String
+    price: String
+    imageURL: String
 }
 
 type AuthData {
@@ -45,7 +48,7 @@ type RootQuery {
     confirmUser(code: Int): String
 
     testScrape(url: String): String
-    enterProductTEST(rawURL: String): String
+    enterProductTEST(rawURL: String): ProducTEST
     registerUserTEST(email: String, pw: String): String
     
 }
