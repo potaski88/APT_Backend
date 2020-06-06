@@ -93,12 +93,12 @@ module.exports = {
     },
 
     ////////////////////////
-    enterProductTEST: async ({rawURL, usr}) => {
+    enterProductTEST: async ({url, usr}) => {
         const target = "https://pupptest.herokuapp.com/getInfo"
-        const url = encodeURIComponent(rawURL)
+        const processedURL = encodeURIComponent(url)
         try {
             const scraped = await axios.post(target, {
-                url: url
+                url: processedURL
               })
               .then(function (response) {
                 console.log(response.data);
