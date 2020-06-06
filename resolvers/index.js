@@ -191,7 +191,6 @@ module.exports = {
         if (existingUser.length > 0) { 
             console.log('already exists');
             return 'already exists'
-//            console.log(existingUser)
         } else {
             const code = Math.floor((Math.random()*10000) + 1)
             const target = "http://potaski.space/api/"
