@@ -213,11 +213,10 @@ module.exports = {
             const code = Math.floor((Math.random()*10000) + 1)
             const target = "http://potaski.space/api/"
         try {
-            return axios.get(target
-                /*, {
+            return axios.post(target, {
                 email: "matwolmu@gmail.com"
             }
-            */)
+            )
             .then(function (response) {
                 console.log(response.data);
                 return "OK" 
