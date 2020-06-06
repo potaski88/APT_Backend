@@ -196,7 +196,7 @@ module.exports = {
             const target = "http://potaski.space/api/"
             try {
                 axios.post(target, {
-                    email: "matwolmu@gmail.com",
+                    email: email,
                     code: code
                 })
                 .then(async function (response) {
