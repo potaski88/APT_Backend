@@ -196,11 +196,11 @@ module.exports = {
             const code = Math.floor((Math.random()*10000) + 1)
             const target = "http://potaski.space/api/"
             try {
-                return axios.post(target, {
+                axios.post(target, {
                     email: "matwolmu@gmail.com",
                     code: code
                 })
-                .then(function (response) {
+                .then(async function (response) {
                     console.log(response.data);
                     const hashedPW = await bcrypt.hash(pw, 12)
                     const enteredUser = await DB_config.enterUser(email, hashedPW, code);
@@ -226,7 +226,7 @@ module.exports = {
         const code = Math.floor((Math.random()*10000) + 1)
         const target = "http://potaski.space/api/"
         try {
-            return axios.post(target, {
+             axios.post(target, {
                 email: "matwolmu@gmail.com",
                 code: code
             })
