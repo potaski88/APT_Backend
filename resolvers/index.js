@@ -92,8 +92,8 @@ module.exports = {
         }
     },
 
-    ////////////////////////
-    enterProductTEST: async ({url, usr}) => {
+
+    enterProduct: async ({url, usr}) => {
         const target = "https://pupptest.herokuapp.com/getInfo"
         const processedURL = encodeURIComponent(url)
         try {
@@ -146,10 +146,10 @@ module.exports = {
 
 
 
-
+/*
     enterProduct: async ({url, usr}) => {
         if(url){
-            const scraped = await Scraper.scrapeProduct(url)
+            const scraped = await Scraper.scrapeProduct(url)    //////////////////////
             let today = new Date().toISOString().slice(0, 10)
             newEntry =  { 
                 url: url,
@@ -190,7 +190,7 @@ module.exports = {
         }  
     },
 
-
+*/
 
 
 

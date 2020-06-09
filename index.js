@@ -72,7 +72,6 @@ app.put('/updateOne', async (req, res) => {
     console.log(newData)
 //    await DB_config.updateProduct(newData)
 //    .then(res.send(JSON.stringify("OK")))
-
     setTimeout(async function(){
         const client = new Client(DB_config.connection_data)
         try {
@@ -171,10 +170,9 @@ app.get('/pupp', async (req, res) => {
 
 
 
-
+/*
 app.get('/email', async (req, res) => {
     var nodemailer = require('nodemailer');
-
 var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -182,14 +180,12 @@ var transporter = nodemailer.createTransport({
     pass: 'matthias88'
   }
 });
-
 var mailOptions = {
   from: 'matwolmu@gmail.com',
   to: 'matwolmu@gmail.com',
   subject: 'Sending Email using Node.js',
   text: 'That was easy!'
 };
-
 transporter.sendMail(mailOptions, function(error, info){
   if (error) {
     console.log(error);
@@ -200,7 +196,7 @@ transporter.sendMail(mailOptions, function(error, info){
   }
 });
 })
-
+*/
 
 
 
