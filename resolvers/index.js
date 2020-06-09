@@ -128,8 +128,11 @@ module.exports = {
                 }
             })
             .catch(err => {console.log(err)})
+
+            console-log("entered.id: " + entered.id )
+
             await DB_config.createProductTable({
-                id: "" + entered.id, 
+                id: entered.id, 
                 price: entered.price,
                 created: today
             })
