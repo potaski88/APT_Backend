@@ -13,7 +13,7 @@ const Utils = require('./utils.js');
 const Scraper = require('ampritra-scraper');
 const fetch = require('node-fetch');
 const axios = require('axios');
-
+const DomParser = require('dom-parser');
 
 
 
@@ -310,6 +310,34 @@ app.get('/gator', async (req, res) => {
             console.log(error);
             res.send("ERROR")
           });
+    } catch (error) {
+        res.send("error")
+    }
+})
+
+
+app.get('/zen', async (req, res) => {
+    try {
+        var request = require('request');
+        const key = "2e4a0950-ab24-11ea-9bcd-4d4684ddfa61"
+        const target = "https://www.amazon.de/dp/0826490913/?coliid=I217ALF18GNQUY&colid=2VAR5ZRGOET20&psc=1&ref_=lv_ov_lig_dp_it"
+        var options = { 
+        url: 'https://app.zenscrape.com/api/v1/get?apikey=' + key +  '&url=' + target 
+        };
+
+        function callback(error, response, body) {
+            if (!error && response.statusCode == 200) {
+            //    console.log(body);
+                const parser = new DomParser()
+                const dom = parser.parseFromString(body)
+                
+                const titleRaw = dom.getElementById('productTitle').innerHTML
+                const title =  titleRaw.trim()
+                res.send(title)
+                console.log(title);
+            }
+        }
+        request(options, callback);
     } catch (error) {
         res.send("error")
     }
