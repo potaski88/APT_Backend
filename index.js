@@ -72,6 +72,16 @@ app.put('/updateOne', async (req, res) => {
     console.log(newData)
     await DB_config.updateProduct(newData)
     .then(res.send(JSON.stringify("OK")))
+
+    try {
+        await DB_config.updateProduct(newData)
+        .then(res.send(JSON.stringify("OK")))
+        .catch (error => console.log(error))
+    } catch (error) {
+        console.log(error)
+        res.send(JSON.stringify("OK"))
+     }
+
 /*
     setTimeout(async function(){
         const client = new Client(DB_config.connection_data)
