@@ -72,14 +72,17 @@ app.put('/updateOne', async (req, res) => {
     console.log(newData)
 
      const client = new Client(DB_config.connection_data)
+     let today = new Date().toISOString().slice(0, 10)
      try {
          await client.connect()
          return await client.query(`
          INSERT INTO public.product_${newData.id} (
             id, 
+            created,
             price
             ) VALUES (
                 nextval('product_${newData.id}_sequence')::integer,
+                ${today}::text,
                 '${newData.price}'::text
             ) returning id;`)
         
