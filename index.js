@@ -70,16 +70,19 @@ app.put('/update', async (req, res) => {
 app.put('/updateOne', async (req, res) => {
     const newData = req.body
     console.log(newData)
-
-
-    try {
-        await DB_config.updateProduct(newData)
-        .then(res.send(JSON.stringify("OK")))
-        .catch (error => console.log(error))
-    } catch (error) {
-        console.log(error)
-        res.send(JSON.stringify("Not OK"))
-     }
+    
+     const client = new Client(DB_config.connection_data)
+     try {
+         await client.connect()
+         return await client.query(`UPDATE public.products SET price = ${newData.price} WHERE id = ${newData.id};`)
+             .then(res => {
+                 return res
+             })
+             .catch (error => console.log(error))
+     } catch (error) {console.log(error) }
+     finally{
+         client.end()
+     } 
 
 /*
     setTimeout(async function(){
