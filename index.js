@@ -70,8 +70,8 @@ app.put('/update', async (req, res) => {
 app.put('/updateOne', async (req, res) => {
     const newData = req.body
     console.log(newData)
-//    await DB_config.updateProduct(newData)
-//    .then(res.send(JSON.stringify("OK")))
+    await DB_config.updateProduct(newData)
+    .then(res.send(JSON.stringify("OK")))
 /*
     setTimeout(async function(){
         const client = new Client(DB_config.connection_data)
