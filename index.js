@@ -88,9 +88,9 @@ app.put('/updateOne', async (req, res) => {
             .then(res => {
                 return res.rows[0].id
             })                
-             .then(res => {
+             .then(reult => {
                  console.log(res)
-                 console.log("entered  " + newData.id +  " ___ " + res)
+                 console.log("entered  " + newData.id +  " ___ " + reult)
                  res.send("OK entered") 
              })
              .catch (error => console.log(error))
