@@ -85,7 +85,9 @@ app.put('/updateOne', async (req, res) => {
                 '${today}'::text,
                 '${newData.price}'::text
             ) returning id;`)
-        
+            .then(res => {
+                return res.rows[0].id
+            })                
              .then(res => {
                  console.log(res)
                  console.log("entered  " + newData.id +  " ___ " + res)
