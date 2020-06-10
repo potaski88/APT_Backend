@@ -82,11 +82,12 @@ app.put('/updateOne', async (req, res) => {
             price
             ) VALUES (
                 nextval('product_${newData.id}_sequence')::integer,
-                ${today}::text,
+                '${today}'::text,
                 '${newData.price}'::text
             ) returning id;`)
         
              .then(res => {
+                 console.log(res)
                  console.log("entered  " + newData.id +  " ___ " + res)
                  return res
              })
