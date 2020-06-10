@@ -91,10 +91,10 @@ app.put('/updateOne', async (req, res) => {
              .then(res => {
                  console.log(res)
                  console.log("entered  " + newData.id +  " ___ " + res)
-                 return res
+                 res.send("OK entered") 
              })
              .catch (error => console.log(error))
-     } catch (error) {console.log(error) }
+     } catch (error) {console.log(error); res.send("NOT entered")  }
      finally{
          client.end()
      } 
