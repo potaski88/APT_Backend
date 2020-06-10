@@ -322,7 +322,7 @@ app.get('/zen', async (req, res) => {
         const key = "2e4a0950-ab24-11ea-9bcd-4d4684ddfa61"
         const target = "https://www.amazon.de/dp/0826490913/?coliid=I217ALF18GNQUY&colid=2VAR5ZRGOET20&psc=1&ref_=lv_ov_lig_dp_it"
         var options = { 
-        url: 'https://app.zenscrape.com/api/v1/get?apikey=' + key +  '&url=' + target 
+        url: 'https://app.zenscrape.com/api/v1/get?apikey=' + key +  '&url=' + target + '&render=true&premium=true'
         };
 
         function callback(error, response, body) {
