@@ -70,8 +70,7 @@ app.put('/update', async (req, res) => {
 app.put('/updateOne', async (req, res) => {
     const newData = req.body
     console.log(newData)
-    await DB_config.updateProduct(newData)
-    .then(res.send(JSON.stringify("OK")))
+
 
     try {
         await DB_config.updateProduct(newData)
