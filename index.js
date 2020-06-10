@@ -55,7 +55,7 @@ app.get('/all', async (req, res) => {
     }
 )
 
-
+/*
 app.put('/update', async (req, res) => {
     const newData = req.body
     newData.forEach(async item => {
@@ -65,13 +65,14 @@ app.put('/update', async (req, res) => {
         })
         res.send(JSON.stringify("OK"))
 })
-
+*/
 
 app.put('/updateOne', async (req, res) => {
     const newData = req.body
     console.log(newData)
 //    await DB_config.updateProduct(newData)
 //    .then(res.send(JSON.stringify("OK")))
+/*
     setTimeout(async function(){
         const client = new Client(DB_config.connection_data)
         try {
@@ -86,6 +87,7 @@ app.put('/updateOne', async (req, res) => {
             client.end()
         } 
     }, 2000);
+    */
 })
 
 
