@@ -79,7 +79,7 @@ app.put('/updateOne', async (req, res) => {
         .catch (error => console.log(error))
     } catch (error) {
         console.log(error)
-        res.send(JSON.stringify("OK"))
+        res.send(JSON.stringify("Not OK"))
      }
 
 /*
