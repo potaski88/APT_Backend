@@ -74,9 +74,17 @@ app.put('/updateOne', async (req, res) => {
      const client = new Client(DB_config.connection_data)
      try {
          await client.connect()
-         return await client.query(`UPDATE public.products SET price = ${newData.price} WHERE id = ${newData.id};`)
+         return await client.query(`
+         INSERT INTO public.product_${newData.id} (
+            id, 
+            price
+            ) VALUES (
+                nextval('product_${newData.id}_sequence')::integer,
+                '${newData.price}'::text
+            ) returning id;`)
+        
              .then(res => {
-                 console.log("entered  " + newData.id)
+                 console.log("entered  " + newData.id +  " ___ " + res)
                  return res
              })
              .catch (error => console.log(error))
