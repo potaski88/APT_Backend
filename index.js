@@ -70,12 +70,13 @@ app.put('/update', async (req, res) => {
 app.put('/updateOne', async (req, res) => {
     const newData = req.body
     console.log(newData)
-    
+
      const client = new Client(DB_config.connection_data)
      try {
          await client.connect()
          return await client.query(`UPDATE public.products SET price = ${newData.price} WHERE id = ${newData.id};`)
              .then(res => {
+                 console.log("entered  " + newData.id)
                  return res
              })
              .catch (error => console.log(error))
