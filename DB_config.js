@@ -206,7 +206,7 @@ async function getAllProducts(userID) {
             SELECT * FROM public.products WHERE scraped=0;
             `)
             .then(async res => {
-                console.log(res.rows)
+            //    console.log(res.rows)
                 if(res.rows.length == 1){
                     // semd and set ALL to 0
                     await client.query(`
