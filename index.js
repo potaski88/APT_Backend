@@ -59,7 +59,7 @@ app.get('/all', async (req, res) => {
 
 app.put('/updateOne', async (req, res) => {
     const newData = req.body
-    console.log(newData)
+    console.log("updateOne     " + newData)
 
      const client = new Client(DB_config.connection_data)
      let today = new Date().toISOString().slice(0, 10)
