@@ -48,7 +48,7 @@ async function createALLProductsTable() {
             price text COLLATE pg_catalog."default",
             title text COLLATE pg_catalog."default",
             url text COLLATE pg_catalog."default",
-            scraped integer
+            scraped integer,
             CONSTRAINT ${name}_pkey PRIMARY KEY (id)
         )
         WITH (OIDS = FALSE)
