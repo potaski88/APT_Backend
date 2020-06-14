@@ -209,7 +209,11 @@ async function getAllProducts(userID) {
                 console.log(res.rows)
                 if(res.rows.length == 1){
                     // semd and set ALL to 0
-                    return res.rows
+                    await client.query(`
+                    UPDATE public.products SET scraped = 0;
+                    `)
+                    .catch(err => {console.log("err")})
+                    return res.rows[0]
                 }else {
                     // send and set to 1
                     await client.query(`
