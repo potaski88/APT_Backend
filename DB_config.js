@@ -56,7 +56,7 @@ async function createALLProductsTable() {
         ALTER TABLE public."${name}"
             OWNER to "${connection_data.user}";
         `);
-    } catch (error) {console.log(error)}
+    } catch (error) {console.log("ERROR   " + error)}
     finally{
         client.end()
     } 
