@@ -55,17 +55,7 @@ app.get('/all', async (req, res) => {
     }
 )
 
-/*
-app.put('/update', async (req, res) => {
-    const newData = req.body
-    newData.forEach(async item => {
-        setTimeout(async function(){
-            await DB_config.updateProduct(item)
-        }, 2000);
-        })
-        res.send(JSON.stringify("OK"))
-})
-*/
+
 
 app.put('/updateOne', async (req, res) => {
     const newData = req.body

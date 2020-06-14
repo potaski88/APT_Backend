@@ -48,6 +48,7 @@ async function createALLProductsTable() {
             price text COLLATE pg_catalog."default",
             title text COLLATE pg_catalog."default",
             url text COLLATE pg_catalog."default",
+            scraped integer
             CONSTRAINT ${name}_pkey PRIMARY KEY (id)
         )
         WITH (OIDS = FALSE)
@@ -117,7 +118,8 @@ async function enterProduct(product) {
                 url, 
                 img,
                 title, 
-                created
+                created,
+                scraped
             ) VALUES (
                 nextval('products_sequence')::integer,
                 ${product.usr} ::integer,
@@ -125,7 +127,8 @@ async function enterProduct(product) {
                 '${product.url}'::text,
                 '${product.img}'::text,
                 '${product.title}'::text,
-                '${product.created}'::text
+                '${product.created}'::text,
+                 0 ::integer
             ) returning id;`)
             .then(res => {
                 return res.rows[0].id
@@ -200,10 +203,21 @@ async function getAllProducts(userID) {
     try {
         await client.connect()
         return await client.query(`
-            SELECT * FROM public.products;
+            SELECT * FROM public.products WHERE scraped=0;
             `)
             .then(res => {
-                return res.rows
+                console.log(res.rows)
+                if(res.rows.length == 1){
+                    // semd and set ALL to 0
+                    return res.rows
+                }else {
+                    // send and set to 1
+                    await client.query(`
+                    UPDATE public.products SET scraped = 1 WHERE id = ${res.rows[0].id};
+                    `)
+                    .catch(err => {console.log("err")})
+                    return res.rows[0]
+                } 
             })
             .catch (error => console.log(error))
     } catch (error) {console.log(error)}
