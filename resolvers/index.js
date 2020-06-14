@@ -85,7 +85,7 @@ module.exports = {
 ////////////////////////////////////////////////////////////////
     testScrape: async (url) =>{
     //    const scraped = await Scraper.scrapePriceOnly(url)
-        if(scraped){
+        if(true){
             return JSON.stringify("not scraped") 
         }else {
             return "FAIL"
