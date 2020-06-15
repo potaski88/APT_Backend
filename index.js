@@ -88,7 +88,7 @@ app.put('/updateOne', async (req, res) => {
                     console.log("send email")
                     await client.query(`
                         UPDATE public.products SET notification = 0 WHERE id=${newData.id};`)
-                    .then(res => {
+                    .then(async res => {
                         console.log("set to 0")
                         await client.query(`
                             SELECT title FROM public.products WHERE id=${newData.id};`
