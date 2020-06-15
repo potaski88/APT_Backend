@@ -76,19 +76,29 @@ app.put('/updateOne', async (req, res) => {
                 '${newData.price}'::text
             ) returning id;`)
             .then(async res => {
-                
                 let notificationValue = await client.query(`
-                    SELECT notification FROM public.products WHERE id=${res.rows[0].id};`)
-                    console.log("HERE")
-                    console.log(newData.price)
-                    console.log(notificationValue)
+                    SELECT notification FROM public.products WHERE id=${newData.id};`
+                )
+                    
+                console.log("HERE")
+                console.log(newData.price)
+                console.log(notificationValue)
+
                 if(parseFloat(newData.price) <= notificationValue){
                     console.log("send email")
                     await client.query(`
                         UPDATE public.products SET notification = 0 WHERE id=${res.rows[0].id};`)
                     .then(res => {
                         console.log("set to 0")
-
+                    })
+                }
+            })         
+     } catch (error) {console.log("error");  }
+     finally{
+         client.end()
+         res.send("OK entered") 
+     } 
+})
 
 //////////////////////////// 
 /*
@@ -112,29 +122,6 @@ app.put('/updateOne', async (req, res) => {
             } catch (error) {console.log(error)} 
             */
 ////////////////////////////
-
-
-
-            
-                    })
-                    .catch(err => {console.log("set to 0 failed")})
-                }
-                return res.rows[0].id
-
-            })                
-             .then(result => {
-            //     console.log("entered  " + newData.id +  " ___ " + result)
-            //     res.send("OK entered") 
-             })
-             .catch (error => console.log("error"))
-     } catch (error) {console.log("error");  }
-     finally{
-         client.end()
-         res.send("OK entered") 
-     } 
-})
-
-
 
 /////////////////////////////////////////////////
 
