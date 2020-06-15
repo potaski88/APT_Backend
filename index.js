@@ -80,11 +80,39 @@ app.put('/updateOne', async (req, res) => {
                 let notificationValue = await client.query(`
                     SELECT notification FROM public.products WHERE id=${res.rows[0].id};`)
                 
-                if(newData.price <= notificationValue){
+                if(parseFloat(newData.price) <= notificationValue){
                     console.log("send email")
                     await client.query(`
                         UPDATE public.products SET notification = 0 WHERE id=${res.rows[0].id};`)
-                    .then(res => {console.log("set to 0")})
+                    .then(res => {
+                        console.log("set to 0")
+
+
+////////////////////////////
+            const target = "http://potaski.space/api/"
+            try {
+                return axios.post(target, {
+                    email: email,
+                    code: code
+                })
+                .then(async function (response) {
+                    console.log(response.data);
+                    const enteredUser = await DB_config.enterUser(email, hashedPW, code);
+                    if(enteredUser){
+                        console.log(enteredUser)
+                    }else {
+                        console.log("")
+
+                    }
+                })
+                .catch(function (error) {console.log(error);});
+            } catch (error) {console.log(error)} 
+////////////////////////////
+
+
+
+            
+                    })
                     .catch(err => {console.log("set to 0 failed")})
                 }
                 return res.rows[0].id
