@@ -49,6 +49,7 @@ async function createALLProductsTable() {
             title text COLLATE pg_catalog."default",
             url text COLLATE pg_catalog."default",
             scraped integer,
+            notification integer,
             CONSTRAINT ${name}_pkey PRIMARY KEY (id)
         )
         WITH (OIDS = FALSE)
@@ -119,7 +120,8 @@ async function enterProduct(product) {
                 img,
                 title, 
                 created,
-                scraped
+                scraped,
+                notification
             ) VALUES (
                 nextval('products_sequence')::integer,
                 ${product.usr} ::integer,
@@ -128,6 +130,7 @@ async function enterProduct(product) {
                 '${product.img}'::text,
                 '${product.title}'::text,
                 '${product.created}'::text,
+                 0 ::integer,
                  0 ::integer
             ) returning id;`)
             .then(res => {
@@ -198,7 +201,7 @@ async function enterUser(email, pw, code) {
 }
 
 
-async function setNotificationValue(prodID, value) {
+async function setNotificationValue(prodID, notification) {
     const client = new Client(connection_data)
     try {
         await client.connect()
@@ -209,7 +212,7 @@ async function setNotificationValue(prodID, value) {
                 console.log(res.rows)
                 if(res.rows.length == 1){
                     await client.query(`
-                    UPDATE public.products SET value = ${value} WHERE id = ${prodID};
+                    UPDATE public.products SET notification = ${notification} WHERE id = ${prodID};
                     `)
                     .catch(err => {console.log("err")})
                 }else {

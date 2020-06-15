@@ -46,7 +46,7 @@ type RootQuery {
     getProductDetails(prodID: Int): [ProductDetails]
     registerUser(email: String, pw: String): String
     confirmUser(code: Int): String
-    setNotificationValue(prodID: Int, value: Int): String
+    setNotificationValue(prodID: Int, notification: Int): String
 
     testScrape(url: String): String
 

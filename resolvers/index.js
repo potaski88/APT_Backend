@@ -64,8 +64,8 @@ module.exports = {
 
     },
     
-    setNotificationValue: async ({prodID, value}) => {
-        await DB_config.setNotificationValue(prodID, value)
+    setNotificationValue: async ({prodID, notification}) => {
+        await DB_config.setNotificationValue(prodID, notification)
         .then(console.log("set notification value"))
         .catch(err => {
             console.log(err)
