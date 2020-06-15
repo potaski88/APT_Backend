@@ -75,12 +75,19 @@ app.put('/updateOne', async (req, res) => {
                 '${today}'::text,
                 '${newData.price}'::text
             ) returning id;`)
-            .then(res => {
+            .then(async res => {
+                
+                let notificationValue = await client.query(`
+                    SELECT notification FROM public.products WHERE id=${res.rows[0].id};`)
+                
+                if(newData.price <= notificationValue){
+                    console.log("send email")
+                }
                 return res.rows[0].id
+
             })                
-             .then(reult => {
-            //     console.log(res)
-                 console.log("entered  " + newData.id +  " ___ " + reult)
+             .then(result => {
+            //     console.log("entered  " + newData.id +  " ___ " + result)
             //     res.send("OK entered") 
              })
              .catch (error => console.log("error"))
@@ -89,23 +96,6 @@ app.put('/updateOne', async (req, res) => {
          client.end()
          res.send("OK entered") 
      } 
-
-/*
-    setTimeout(async function(){
-        const client = new Client(DB_config.connection_data)
-        try {
-            await client.connect()
-            return await client.query(`UPDATE public.products SET price = ${newData.price} WHERE id = ${newData.id};`)
-                .then(res => {
-                    return res
-                })
-                .catch (error => console.log(error))
-        } catch (error) {console.log(error) }
-        finally{
-            client.end()
-        } 
-    }, 2000);
-    */
 })
 
 
