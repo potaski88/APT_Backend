@@ -63,7 +63,14 @@ module.exports = {
         }
 
     },
-
+    
+    setNotificationValue: async ({prodID, value}) => {
+        await DB_config.setNotificationValue(prodID, value)
+        .then(console.log("set notification value"))
+        .catch(err => {
+            console.log(err)
+        })
+    },
 
     createALLProductsTable: async () => {
         await DB_config.createALLProductsTable()

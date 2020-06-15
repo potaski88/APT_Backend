@@ -198,6 +198,32 @@ async function enterUser(email, pw, code) {
 }
 
 
+async function setNotificationValue(prodID, value) {
+    const client = new Client(connection_data)
+    try {
+        await client.connect()
+        return await client.query(`
+            SELECT * FROM public.products WHERE id=${prodID};
+            `)
+            .then(async res => {
+                console.log(res.rows)
+                if(res.rows.length == 1){
+                    await client.query(`
+                    UPDATE public.products SET value = ${value} WHERE id = ${prodID};
+                    `)
+                    .catch(err => {console.log("err")})
+                }else {
+                    console.log("err")
+                } 
+            })
+            .catch (error => console.log(error))
+    } catch (error) {console.log(error)}
+    finally{
+        client.end()
+    } 
+}
+
+
 async function getAllProducts(userID) {
     const client = new Client(connection_data)
     try {
@@ -252,7 +278,6 @@ async function getAllByUserID(userID) {
 
 async function deleteProduct(prodID) {
     const client = new Client(connection_data)
-
     console.log("drop: " + prodID)
     try {
         await client.connect()
@@ -337,9 +362,11 @@ async function updateProduct({id, price}) {
         finally{
             client.end()
         } 
-    }, 2000);
-    
+    }, 2000);    
 }
+
+
+
 
 
 
@@ -441,9 +468,14 @@ exports.findUser = findUser
 exports.confirmUser = confirmUser
 exports.updateProduct = updateProduct
 exports.getAllProducts = getAllProducts
+exports.setNotificationValue = setNotificationValue
 
 exports.test = test
 exports.showTest = showTest
 
 
  exports.sequelize = sequelize
+
+
+
+ 
