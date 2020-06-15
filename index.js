@@ -82,14 +82,38 @@ app.put('/updateOne', async (req, res) => {
                     
                 console.log("HERE")
                 console.log(newData.price)
-                console.log(notificationValue)
+                console.log(notificationValue.rows[0])
 
-                if(parseFloat(newData.price) <= notificationValue){
+                if(parseFloat(newData.price) <= notificationValue.rows[0],notification){
                     console.log("send email")
                     await client.query(`
                         UPDATE public.products SET notification = 0 WHERE id=${newData.id};`)
                     .then(res => {
                         console.log("set to 0")
+                        await client.query(`
+                            SELECT title FROM public.products WHERE id=${newData.id};`
+                        )
+                        .then(title => {
+                             // send email newData.price
+                             //////////////////////////// 
+                /*
+                            const target = "http://potaski.space/api/"
+                            try {
+                                return axios.post(target, {
+                                    email: email,
+                                    title: title,
+                                    price: price
+                                })
+                                .then(async function (response) {
+                                    console.log(response.data);
+     
+                                })
+                                .catch(function (error) {console.log("error");});
+                            } catch (error) {console.log("error")} 
+                */            
+                ////////////////////////////
+                        })
+                        .catch(err => console.log("err"))
                     })
                 }
             })         
@@ -100,28 +124,7 @@ app.put('/updateOne', async (req, res) => {
      } 
 })
 
-//////////////////////////// 
-/*
-            const target = "http://potaski.space/api/"
-            try {
-                return axios.post(target, {
-                    email: email,
-                    code: code
-                })
-                .then(async function (response) {
-                    console.log(response.data);
-                    const enteredUser = await DB_config.enterUser(email, hashedPW, code);
-                    if(enteredUser){
-                        console.log(enteredUser)
-                    }else {
-                        console.log("")
 
-                    }
-                })
-                .catch(function (error) {console.log(error);});
-            } catch (error) {console.log(error)} 
-            */
-////////////////////////////
 
 /////////////////////////////////////////////////
 
