@@ -88,7 +88,8 @@ app.put('/updateOne', async (req, res) => {
                         console.log("set to 0")
 
 
-////////////////////////////
+//////////////////////////// 
+/*
             const target = "http://potaski.space/api/"
             try {
                 return axios.post(target, {
@@ -107,6 +108,7 @@ app.put('/updateOne', async (req, res) => {
                 })
                 .catch(function (error) {console.log(error);});
             } catch (error) {console.log(error)} 
+            */
 ////////////////////////////
 
 
