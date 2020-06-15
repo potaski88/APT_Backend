@@ -82,6 +82,10 @@ app.put('/updateOne', async (req, res) => {
                 
                 if(newData.price <= notificationValue){
                     console.log("send email")
+                    await client.query(`
+                        UPDATE public.products SET notification = 0 WHERE id=${res.rows[0].id};`)
+                    .then(res => {console.log("set to 0")})
+                    .catch(err => {console.log("set to 0 failed"})
                 }
                 return res.rows[0].id
 
