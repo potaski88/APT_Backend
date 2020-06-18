@@ -101,19 +101,24 @@ app.put('/updateOne', async (req, res) => {
                             await client.query(`
                                 SELECT email FROM public.users WHERE id=${newData.usr};`  //////
                             )
-                            const target = "http://potaski.space/api/"
-                            try {
-                                return axios.post(target, {
-                                    email: email,   ///
-                                    title: result.rows[0],   ///
-                                    price: newData.price  ///
-                                })
-                                .then(async function (response) {
-                                    console.log(response.data);
-     
-                                })
-                                .catch(function (error) {console.log("error");});
-                            } catch (error) {console.log("error")} 
+                            .then(email => {
+                               const target = "http://potaski.space/api/"
+                                try {
+                                    return axios.post(target, {
+                                        email: email.rows[0],   ///
+                                        title: result.rows[0],   ///
+                                        price: newData.price  ///
+                                    })
+                                    .then(async function (response) {
+                                        console.log("email sent");
+                                        console.log(response.data);
+        
+                                    })
+                                    .catch(function (error) {console.log("error");});
+                                } catch (error) {console.log("error")}  
+                            })
+                            .catch(err => {console.log("err")})
+                            
                             
                 ////////////////////////////
                 */
