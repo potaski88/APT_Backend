@@ -79,8 +79,7 @@ app.put('/updateOne', async (req, res) => {
                 let notificationValue = await client.query(`
                     SELECT notification FROM public.products WHERE id=${newData.id};`
                 )
-                    
-                console.log("HERE")
+
                 console.log(newData.price)
                 console.log(notificationValue.rows[0])
 
@@ -93,16 +92,21 @@ app.put('/updateOne', async (req, res) => {
                         await client.query(`
                             SELECT title FROM public.products WHERE id=${newData.id};`
                         )
-                        .then(title => {
+                        .then(result => {
+                       //    console.log(result)
+                            console.log(result.rows[0])
                              // send email newData.price
                              //////////////////////////// 
-                /*
+                             
+                            await client.query(`
+                                SELECT email FROM public.users WHERE id=${newData.usr};`  //////
+                            )
                             const target = "http://potaski.space/api/"
                             try {
                                 return axios.post(target, {
-                                    email: email,
-                                    title: title,
-                                    price: price
+                                    email: email,   ///
+                                    title: result.rows[0],   ///
+                                    price: newData.price  ///
                                 })
                                 .then(async function (response) {
                                     console.log(response.data);
@@ -110,8 +114,9 @@ app.put('/updateOne', async (req, res) => {
                                 })
                                 .catch(function (error) {console.log("error");});
                             } catch (error) {console.log("error")} 
-                */            
+                            
                 ////////////////////////////
+                */
                         })
                         .catch(err => console.log("err"))
                     })
