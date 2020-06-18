@@ -118,15 +118,13 @@ app.put('/updateOne', async (req, res) => {
                                 } catch (error) {console.log("error")}  
                             })
                             .catch(err => {console.log("err")})
-                            
-                            
-                ////////////////////////////
-                
                         })
                         .catch(err => console.log("err"))
                     })
-                }
-            })         
+                    .catch(err => console.log("err"))
+                } // end if
+            })
+            .catch(err => console.log("err"))         
      } catch (error) {console.log("error");  }
      finally{
          client.end()
