@@ -105,13 +105,13 @@ app.put('/updateOne', async (req, res) => {
                                const target = "http://potaski.space/api/"
                                 try {
                                     return axios.post(target, {
-                                        email: email.rows[0],   ///
-                                        title: result.rows[0],   ///
-                                        price: newData.price  ///
+                                        email: email.rows[0],   
+                                        title: result.rows[0],   
+                                        price: newData.price  
                                     })
                                     .then(async function (response) {
                                         console.log("email sent");
-                                        console.log(response.data);
+                                    //    console.log(response);
         
                                     })
                                     .catch(function (error) {console.log("error");});
