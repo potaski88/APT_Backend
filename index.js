@@ -92,7 +92,7 @@ app.put('/updateOne', async (req, res) => {
                         await client.query(`
                             SELECT title FROM public.products WHERE id=${newData.id};`
                         )
-                        .then(result => {
+                        .then( async result => {
                        //    console.log(result)
                             console.log(result.rows[0])
                              // send email newData.price
