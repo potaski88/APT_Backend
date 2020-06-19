@@ -113,7 +113,7 @@ app.put('/updateOne', async (req, res) => {
                                         price: newData.price  
                                     })
                                     .then(function (response) {
-                                        console.log(response);
+                                        console.log(response.data);
         
                                     })
                                     .catch(function (error) {console.log("error");});
