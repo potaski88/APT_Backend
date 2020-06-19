@@ -103,7 +103,7 @@ app.put('/updateOne', async (req, res) => {
                             )
                             .then(email => {
 
-                                console.log("sending email to " + email.rows[0] + " id: " + newData.usr)
+                                console.log("sending email to " + email.rows[0]["email"] + " id: " + newData.usr)
                                 console.log(email)
 
                                const target = "http://potaski.space/api/"
