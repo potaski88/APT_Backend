@@ -101,16 +101,13 @@ app.put('/updateOne', async (req, res) => {
                             await client.query(`
                                 SELECT email FROM public.users WHERE id=${newData.usr};`  //////
                             )
-                            .then(email => {
-
-                                console.log("sending email to " + email.rows[0]["email"] + " id: " + newData.usr)
-                                console.log(email)
-
-                               const target = "http://potaski.space/api/"
+                            .then(rawEmail => {
+                                const email = rawEmail.rows[0]["email"]
+                                const target = "http://potaski.space/api/"
                                 try {
                                     return axios.post(target, {
-                                        email: email.rows[0],   
-                                        title: result.rows[0],   
+                                        email: rawEmail,   
+                                        title: result.rows[0]["title"],   
                                         price: newData.price  
                                     })
                                     .then(function (response) {
