@@ -92,17 +92,21 @@ app.put('/updateOne', async (req, res) => {
                         await client.query(`
                             SELECT title FROM public.products WHERE id=${newData.id};`
                         )
-                        .then( async result => {
-                       //    console.log(result)
-                            console.log(result.rows[0])
-                             // send email newData.price
-                             //////////////////////////// 
-                             
+                        .then( async result => {                      
                             await client.query(`
                                 SELECT email FROM public.users WHERE id=${newData.usr};`  //////
                             )
                             .then(rawEmail => {
                                 const email = rawEmail.rows[0]["email"]
+
+
+                                console.log("email")
+                                console.log(rawEmail.rows[0]["email"])
+                                console.log("title")
+                                console.log(result.rows[0]["title"])
+                                console.log("price")
+                                console.log(newData.price)
+
                                 const target = "http://potaski.space/api/"
                                 try {
                                     return axios.post(target, {
