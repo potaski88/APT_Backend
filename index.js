@@ -112,9 +112,8 @@ app.put('/updateOne', async (req, res) => {
                                         title: result.rows[0],   
                                         price: newData.price  
                                     })
-                                    .then(async function (response) {
-                                        console.log("email sent");
-                                    //    console.log(response);
+                                    .then(function (response) {
+                                        console.log(response);
         
                                     })
                                     .catch(function (error) {console.log("error");});
