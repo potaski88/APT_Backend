@@ -313,11 +313,16 @@ async function deleteUser(userID) {
             .then(async x => {
                 return await client.query(`
                     SELECT id FROM public.products WHERE usr = ${userID};
+                    DELETE FROM public.products WHERE usr=${userID};
                 `)
             })
             .then(res => {
-                console.log("res.rows")
-                console.log(res.rows)
+                res.forEach(async item => {
+                    console.log("item.id: " + item.id)
+                    await client.query(`
+                        DROP TABLE public.product_${item.id};
+                    `)
+                })
                 return "OK"
             })
             .catch (error => console.log(error))
