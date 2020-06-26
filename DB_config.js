@@ -310,7 +310,14 @@ async function deleteUser(userID) {
             DELETE FROM public.users
             WHERE id=${userID};
             `)
+            .then(x => {
+                return await client.query(`
+                    SELECT id FROM public.products WHERE usr = ${userID};
+                `)
+            })
             .then(res => {
+                console.log("res.rows")
+                console.log(res.rows)
                 return "OK"
             })
             .catch (error => console.log(error))
@@ -318,8 +325,6 @@ async function deleteUser(userID) {
     finally{
         client.end()
     } 
-
-       //     SELECT id FROM public.products WHERE usr = ${userID};
 }
 
 

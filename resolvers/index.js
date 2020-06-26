@@ -91,8 +91,7 @@ module.exports = {
     deleteUser: async ({userID}) => {
         await DB_config.deleteUser(userID)
         .then(res => {
-            console.log("user " + "deleted")
-            console.log(res)
+            console.log("user " + userID + "deleted")
         })
         .catch(err => {
             console.log(err)
