@@ -317,10 +317,13 @@ async function deleteUser(userID) {
                 `)
             })
             .then(res => {
+                console.log("res:")
+                console.log(res)
+                
                 res.forEach(async item => {
                     console.log("item.id: " + item.id)
                     await client.query(`
-                        DROP TABLE public.product_${item.id};
+                        DROP TABLE public.product_"${item.id}";
                     `)
                 })
                 return "OK"
