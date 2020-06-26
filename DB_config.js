@@ -304,7 +304,6 @@ async function deleteProduct(prodID) {
 
 async function deleteUser(userID) {
     const client = new Client(connection_data)
-    console.log("drop: " + prodID)
     try {
         await client.connect()
         return await client.query(`
