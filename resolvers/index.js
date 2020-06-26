@@ -88,7 +88,7 @@ module.exports = {
         })
     },
 
-    deleteUser: async (userID) => {
+    deleteUser: async ({userID}) => {
         await DB_config.deleteUser(userID)
         .then(res => {
             console.log("user " + "deleted")
