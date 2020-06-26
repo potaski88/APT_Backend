@@ -97,6 +97,14 @@ app.put('/updateOne', async (req, res) => {
                                 SELECT email FROM public.users WHERE id=${newData.usr};`  //////
                             )
                             .then(rawEmail => {
+                                
+                                console.log("email")
+                                console.log(rawEmail.rows[0]["email"])
+                                console.log("title")
+                                console.log(result.rows[0]["title"])
+                                console.log("price")
+                                console.log(newData.price)
+
                                 const target = "http://potaski.space/api/"
                                 try {
                                     return axios.post(target, {

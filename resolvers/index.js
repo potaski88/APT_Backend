@@ -88,6 +88,19 @@ module.exports = {
         })
     },
 
+    deleteUser: async (userID) => {
+        await DB_config.deleteUser(userID)
+        .then(res => {
+            console.log("user " + "deleted")
+            console.log(res)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    },
+
+    
+
 
 ////////////////////////////////////////////////////////////////
     testScrape: async (url) =>{

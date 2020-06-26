@@ -302,6 +302,29 @@ async function deleteProduct(prodID) {
 }
 
 
+async function deleteUser(userID) {
+    const client = new Client(connection_data)
+    console.log("drop: " + prodID)
+    try {
+        await client.connect()
+        return await client.query(`
+            DELETE FROM public.users
+            WHERE id=${userID};
+
+            SELECT id FROM public.products WHERE usr = ${userID};
+            `)
+            .then(res => {
+                return res.rows
+            })
+            .catch (error => console.log(error))
+    } catch (error) {console.log(error)}
+    finally{
+        client.end()
+    } 
+
+}
+
+
 async function getProductDetails(prodID) {
     const client = new Client(connection_data)
     try {
@@ -472,6 +495,8 @@ exports.confirmUser = confirmUser
 exports.updateProduct = updateProduct
 exports.getAllProducts = getAllProducts
 exports.setNotificationValue = setNotificationValue
+exports.deleteUser = deleteUser
+
 
 exports.test = test
 exports.showTest = showTest

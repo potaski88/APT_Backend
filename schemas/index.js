@@ -47,6 +47,7 @@ type RootQuery {
     registerUser(email: String, pw: String): String
     confirmUser(code: Int): String
     setNotificationValue(prodID: Int, notification: Int): String
+    deleteUser(userID: Int): String
 
     testScrape(url: String): String
 
