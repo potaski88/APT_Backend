@@ -310,7 +310,7 @@ async function deleteUser(userID) {
             DELETE FROM public.users
             WHERE id=${userID};
             `)
-            .then(x => {
+            .then(async x => {
                 return await client.query(`
                     SELECT id FROM public.products WHERE usr = ${userID};
                 `)
