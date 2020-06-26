@@ -320,7 +320,7 @@ async function deleteUser(userID) {
                 res.rows.forEach(async item => {
                     console.log("item.id: " + item.id)
                     await client.query(`
-                        DROP TABLE public.product_"${item.id}";
+                        DROP TABLE public.product_${item.id};
                     `)
                 })
             })
