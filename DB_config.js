@@ -92,8 +92,8 @@ async function createProductTable({id, price, created}) {
             created
         ) VALUES (
             nextval('${name}_sequence')::integer,
-            '${price}'::text, 
-            '${created}'::text
+            ${price}::text, 
+            ${created}::text
         );      
         `);
     } catch (error) {console.log(error)}
