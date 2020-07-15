@@ -4,12 +4,13 @@ module.exports = buildSchema(`
 
 type Product {
     id: Int
-    usr: Int
-    url: String
-    title: String
-    price: String
-    img: String
     created: String
+    usr: Int
+    img: String
+    price: String
+    title: String
+    url: String
+    notification: Int
 }
 type ProducTEST {
     title: String

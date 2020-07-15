@@ -15,7 +15,6 @@ module.exports = {
 
     getAllByUserID: async (args) => {
         const products = await DB_config.getAllByUserID(args.userID)
-        
         if(products){
 //            console.log("All products:", JSON.stringify(products, null, 2));
             return products;

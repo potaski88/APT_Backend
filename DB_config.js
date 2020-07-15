@@ -265,7 +265,7 @@ async function getAllByUserID(userID) {
     try {
         await client.connect()
         return await client.query(`
-            SELECT * FROM public.products
+            SELECT id, created, usr, img, price, title, url, notification FROM public.products
             WHERE usr=${userID};
             `)
             .then(res => {
