@@ -362,6 +362,8 @@ async function getProductInfo(prodID) {
             SELECT img, price, title, notification FROM public.products WHERE id = ${prodID};
             `)
             .then(res => {
+                console.log("HERE")
+                console.log(res.rows)
                 return res.rows
             })
             .catch (error => console.log(error))

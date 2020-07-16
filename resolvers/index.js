@@ -332,6 +332,7 @@ module.exports = {
     getProductInfo: async ({prodID}) => {
         const details = await DB_config.getProductInfo(prodID)
         if (details) {
+            console.log(details)
             return details
         } else {
             console.log("error")
