@@ -32,6 +32,16 @@ type ProductTimeline {
     img: String
 }
 
+type ProductInfo {
+    img: String
+    price: String
+    title: String
+    notification: Int
+}
+
+
+
+
 
 
 
@@ -45,6 +55,7 @@ type RootQuery {
     createALLProductsTable: String
     deleteProduct(prodID: Int): String
     getProductTimeline(prodID: Int): [ProductTimeline]
+    getProductInfo(prodID: Int): ProductInfo
     registerUser(email: String, pw: String): String
     confirmUser(code: Int): String
     setNotificationValue(prodID: Int, notification: Int): String

@@ -354,6 +354,22 @@ async function getProductTimeline(prodID) {
         client.end()
     } 
 }
+async function getProductInfo(prodID) {
+    const client = new Client(connection_data)
+    try {
+        await client.connect()
+        return await client.query(`
+            SELECT img, price, title, notification FROM public.products WHERE id = '${prodID}';
+            `)
+            .then(res => {
+                return res.rows
+            })
+            .catch (error => console.log(error))
+    } catch (error) {console.log(error)}
+    finally{
+        client.end()
+    } 
+}
 
 
 async function findUser(name) {
@@ -502,7 +518,8 @@ exports.createUsersTable = createUsersTable
 exports.enterUser = enterUser
 exports.getAllByUserID = getAllByUserID
 exports.deleteProduct = deleteProduct
-exports.getProductDetails = getProductDetails
+exports.getProductTimeline = getProductTimeline
+exports.getProductInfo = getProductInfo
 exports.findUser = findUser
 exports.confirmUser = confirmUser
 exports.updateProduct = updateProduct
