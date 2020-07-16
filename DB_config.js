@@ -359,7 +359,7 @@ async function getProductInfo(prodID) {
     try {
         await client.connect()
         return await client.query(`
-            SELECT img, price, title, notification FROM public.products WHERE id = '${prodID}';
+            SELECT img, price, title, notification FROM public.products WHERE id = ${prodID};
             `)
             .then(res => {
                 return res.rows
