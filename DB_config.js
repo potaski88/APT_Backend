@@ -338,7 +338,7 @@ async function deleteUser(userID) {
 }
 
 
-async function getProductDetails(prodID) {
+async function getProductTimeline(prodID) {
     const client = new Client(connection_data)
     try {
         await client.connect()

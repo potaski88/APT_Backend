@@ -25,7 +25,7 @@ type AuthData {
     msg: String
 }
 
-type ProductDetails {
+type ProductTimeline {
     id: String
     created: String
     price: String
@@ -44,7 +44,7 @@ type RootQuery {
     enterUser(email: String, pw: String): Int
     createALLProductsTable: String
     deleteProduct(prodID: Int): String
-    getProductDetails(prodID: Int): [ProductDetails]
+    getProductTimeline(prodID: Int): [ProductTimeline]
     registerUser(email: String, pw: String): String
     confirmUser(code: Int): String
     setNotificationValue(prodID: Int, notification: Int): String

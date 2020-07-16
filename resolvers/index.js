@@ -319,8 +319,8 @@ module.exports = {
         })
     },
 
-    getProductDetails: async ({prodID}) => {
-        const details = await DB_config.getProductDetails(prodID)
+    getProductTimeline: async ({prodID}) => {
+        const details = await DB_config.getProductTimeline(prodID)
         if (details) {
 //            console.log(details)
             return details
