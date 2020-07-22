@@ -123,7 +123,7 @@ async function enterProduct(product) {
                 scraped,
                 notification
             ) VALUES (
-                1::integer,
+                ${product.usr} ::integer,
                 ${product.usr} ::integer,
                 '${product.price}'::text, 
                 '${product.url}'::text,
