@@ -123,7 +123,7 @@ module.exports = {
                 return response.data
               })
               .catch(function (error) {
-                console.log(error);
+            //    console.log(error);
               });
             let today = new Date().toISOString().slice(0, 10)
             newEntry =  { 
@@ -145,7 +145,9 @@ module.exports = {
                     img: scraped.imageURL,   
                 }
             })
-            .catch(err => {console.log(err)})
+            .catch(err => {
+            //    console.log(err)
+            })
 
             console.log("entered.id: " + entered.id )
 
