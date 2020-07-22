@@ -132,7 +132,7 @@ async function enterProduct(product) {
                 '${product.created}'::text,
                  0 ::integer,
                  0 ::integer
-            ) returning id;`)               // nextval('products_sequence')::integer,
+            ) returning 1;`)               // nextval('products_sequence')::integer,
             .then(res => {
                 console.log("-------------------------------------------")
                 console.log(res.rows[0].id)
