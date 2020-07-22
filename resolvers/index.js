@@ -150,6 +150,7 @@ module.exports = {
             })
 
             console.log("entered.id: " + entered.id )
+            console.log(entered)
 
             await DB_config.createProductTable({
                 id: entered.id, 

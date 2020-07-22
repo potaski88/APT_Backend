@@ -123,7 +123,7 @@ async function enterProduct(product) {
                 scraped,
                 notification
             ) VALUES (
-                nextval('products_sequence')::integer,
+                1::integer,
                 ${product.usr} ::integer,
                 '${product.price}'::text, 
                 '${product.url}'::text,
@@ -132,7 +132,7 @@ async function enterProduct(product) {
                 '${product.created}'::text,
                  0 ::integer,
                  0 ::integer
-            ) returning id;`)
+            ) returning id;`)               // nextval('products_sequence')::integer,
             .then(res => {
                 console.log("-------------------------------------------")
                 console.log(res.rows[0].id)
@@ -140,7 +140,7 @@ async function enterProduct(product) {
                 return res.rows[0].id
             })
             .catch (error => {
-                console.log(error)
+                console.log("error")
             })
     } catch (error) {
         //console.log(error)
