@@ -134,6 +134,9 @@ async function enterProduct(product) {
                  0 ::integer
             ) returning id;`)
             .then(res => {
+                console.log("-------------------------------------------")
+                console.log(res.rows[0].id)
+                console.log("-------------------------------------------")
                 return res.rows[0].id
             })
             .catch (error => console.log(error))
