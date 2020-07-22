@@ -12,7 +12,8 @@ type Product {
     url: String
     notification: Int
 }
-type ProducTEST {
+type ProductADDED {
+    id: Int
     title: String
     price: String
     imageURL: String
@@ -50,7 +51,7 @@ type RootQuery {
     login(email: String, pw: String): AuthData
     createProductTable(name: String): String
     createUsersTable: String
-    enterProduct(url: String, usr: Int): Product
+    enterProduct(url: String, usr: Int): ProductADDED
     enterUser(email: String, pw: String): Int
     createALLProductsTable: String
     deleteProduct(prodID: Int): String

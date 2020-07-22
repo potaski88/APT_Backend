@@ -139,8 +139,12 @@ async function enterProduct(product) {
                 console.log("-------------------------------------------")
                 return res.rows[0].id
             })
-            .catch (error => console.log(error))
-    } catch (error) {console.log(error)}
+            .catch (error => {
+                console.log(error)
+            })
+    } catch (error) {
+        //console.log(error)
+    }
     finally{
         client.end()
     } 
