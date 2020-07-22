@@ -134,10 +134,10 @@ module.exports = {
                 img: scraped.imageURL,
                 created: today             
             }
-            const entered = await DB_config.enterProduct(newEntry)
+            const entered = await DB_config.enterProduct(newEntry)   /// problem!!!!!
             .then(res => {
                 return {
-                    id: 5,
+                    id: 5,  ////////// res
                     usr: newEntry.usr,
                     url: url,
                     title: scraped.title,
