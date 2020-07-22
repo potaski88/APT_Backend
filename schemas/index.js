@@ -16,7 +16,7 @@ type ProductADDED {
     id: Int
     title: String
     price: String
-    imageURL: String
+    img: String
 }
 
 type AuthData {
