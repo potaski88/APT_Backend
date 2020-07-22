@@ -137,7 +137,7 @@ module.exports = {
             const entered = await DB_config.enterProduct(newEntry)
             .then(res => {
                 return {
-                    id: res,
+                    id: 5,
                     usr: newEntry.usr,
                     url: url,
                     title: scraped.title,
