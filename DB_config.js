@@ -141,7 +141,7 @@ async function enterProduct(product) {
                 return 3;
             })
             .catch (error => {
-                console.log("error")
+                console.log(error)  /////
             })
     } catch (error) {
         //console.log(error)
