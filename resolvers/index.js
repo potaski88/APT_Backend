@@ -160,10 +160,12 @@ module.exports = {
             .then(res => {
                 return res
             })
-            .catch(err => {console.log(err)})
+            .catch(err => {
+            //    console.log(err)
+            })
             return entered
         } catch (error) {
-            console.log(error)
+        //    console.log(error)
             return "error"
         }
     },

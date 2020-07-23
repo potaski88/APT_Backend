@@ -137,10 +137,10 @@ async function enterProduct(product) {
                 return res.rows[0].id
             })
             .catch (error => {
-                console.log("error")  /////
+                console.log(error)  /////
             })
     } catch (error) {
-        //console.log(error)
+        console.log(error)
     }
     finally{
         client.end()
