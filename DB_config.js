@@ -129,7 +129,7 @@ async function enterProduct(product) {
                 '${product.img}'::text,
                 '${product.price}'::text,
                 '${product.title}'::text,
-                '${product.url}'::text,
+                'test'::text,
                  0 ::integer,
                  0 ::integer
             ) returning id;`)               // nextval('products_sequence')::integer,
