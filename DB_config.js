@@ -124,12 +124,12 @@ async function enterProduct(product) {
                 notification
             ) VALUES (
                 nextval('products_sequence')::integer,
-                '${product.created}'::text,
-                ${product.usr} ::integer,
-                '${product.img}'::text,
-                '${product.price}'::text,
-                '${product.title}'::text,
-                '${product.url}'::text,
+                'test'::text,
+                58::integer,
+                'test'::text,
+                'test'::text,
+                'test'::text,
+                'test'::text,
                  0 ::integer,
                  0 ::integer
             ) returning id;`)               // nextval('products_sequence')::integer,
