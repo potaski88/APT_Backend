@@ -127,7 +127,7 @@ async function enterProduct(product) {
                 '${product.created}'::text,
                 ${product.usr} ::integer,
                 '${product.img}'::text,
-                'test'::text,
+                '${product.price}'::text,
                 'test'::text,
                 'test'::text,
                  0 ::integer,
