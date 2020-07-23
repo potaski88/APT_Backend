@@ -124,7 +124,7 @@ async function enterProduct(product) {
                 notification
             ) VALUES (
                 nextval('products_sequence')::integer,
-                'test'::text,
+                '${product.created}'::text,
                 ${product.usr} ::integer,
                 'test'::text,
                 'test'::text,
