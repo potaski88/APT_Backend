@@ -123,7 +123,7 @@ async function enterProduct(product) {
                 scraped,
                 notification
             ) VALUES (
-                currval('products_sequence') ::integer,
+                nextval('products_sequence')::integer,
                 '${product.created}'::text,
                 ${product.usr} ::integer,
                 '${product.img}'::text,
@@ -132,7 +132,7 @@ async function enterProduct(product) {
                 '${product.url}'::text,
                  0 ::integer,
                  0 ::integer
-            ) returning id;`)               // nextval('products_sequence')::integer,
+            ) returning nextval('products_sequence');`)               // nextval('products_sequence')::integer,
             .then(res => {
                 return res.rows[0].id
             })
