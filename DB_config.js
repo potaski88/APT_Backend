@@ -113,6 +113,30 @@ async function enterProduct(product) {
         await client.connect()
         return await client.query(`
             INSERT INTO public.products (
+                id
+            ) VALUES (
+                1::integer
+            ) returning id;`)               // nextval('products_sequence')::integer,
+            .then(res => {
+                console.log("-------------------------------------------")
+                console.log(res)
+                console.log("-------------------------------------------")
+            //    return res.rows[0].id
+                return 3;
+            })
+            .catch (error => {
+                console.log("error")  /////
+            })
+    } catch (error) {
+        //console.log(error)
+    }
+    finally{
+        client.end()
+    } 
+}
+
+/*
+INSERT INTO public.products (
                 id, 
                 created,
                 usr,
@@ -132,26 +156,9 @@ async function enterProduct(product) {
                 '${product.url}'::text,
                  0 ::integer,
                  0 ::integer
-            ) returning usr;`)               // nextval('products_sequence')::integer,
-            .then(res => {
-                console.log("-------------------------------------------")
-                console.log(res.rows)
-                console.log("-------------------------------------------")
-            //    return res.rows[0].id
-                return 3;
-            })
-            .catch (error => {
-                console.log(error)  /////
-            })
-    } catch (error) {
-        //console.log(error)
-    }
-    finally{
-        client.end()
-    } 
-}
+            ) returning usr;`)
 
-
+*/
 
 
 async function createUsersTable() {
