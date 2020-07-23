@@ -119,7 +119,7 @@ module.exports = {
                 url: processedURL
               })
               .then(function (response) {
-                console.log(response.data);
+            //    console.log(response.data);
                 return response.data
               })
               .catch(function (error) {
@@ -134,6 +134,10 @@ module.exports = {
                 img: scraped.imageURL,
                 created: today             
             }
+
+            console.log("newEntry-----------------------------------------------")
+            console.log(newEntry)
+            
             const entered = await DB_config.enterProduct(newEntry)   /// problem!!!!!
             .then(res => {
                 return {
