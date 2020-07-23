@@ -128,10 +128,10 @@ async function enterProduct(product) {
                 ${product.usr} ::integer,
                 '${product.img}'::text,
                 '${product.price}'::text,
-                'test'::text,
-                'test'::text,
                 '${product.title}'::text,
                 '${product.url}'::text,
+                 0 ::integer,
+                 0 ::integer
             ) returning id;`)               // nextval('products_sequence')::integer,
             .then(res => {
                 return res.rows[0].id
