@@ -119,7 +119,7 @@ async function enterProduct(product) {
                 img,
                 price,
                 title,
-                url, 
+                url,
                 scraped,
                 notification
             ) VALUES (
