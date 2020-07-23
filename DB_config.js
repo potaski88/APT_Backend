@@ -123,7 +123,7 @@ async function enterProduct(product) {
                 scraped,
                 notification
             ) VALUES (
-                currval('products_sequence') + 1 ::integer,
+                currval('products_sequence') ::integer,
                 '${product.created}'::text,
                 ${product.usr} ::integer,
                 '${product.img}'::text,
