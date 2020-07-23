@@ -135,11 +135,13 @@ module.exports = {
                 created: today             
             }
 
-            console.log("newEntry-----------------------------------------------")
-            console.log(newEntry)
-            
+
             const entered = await DB_config.enterProduct(newEntry)   /// problem!!!!!
             .then(res => {
+
+                console.log("res in entered -----------------------------------------------")
+                console.log(res)
+
                 return {
                     id: res,
                     usr: newEntry.usr,
