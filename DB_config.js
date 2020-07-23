@@ -113,12 +113,27 @@ async function enterProduct(product) {
         await client.connect()
         return await client.query(`
             INSERT INTO public.products (
-                id
+                id,
+                created,
+                usr,
+                img,
+                price,
+                title,
+                url, 
+                scraped,
+                notification
             ) VALUES (
-                nextval('products_sequence')::integer
+                nextval('products_sequence')::integer,
+                '${product.created}'::text,
+                ${product.usr} ::integer,
+                '${product.img}'::text,
+                '${product.price}'::text,
+                '${product.title}'::text,
+                '${product.url}'::text,
+                 0 ::integer,
+                 0 ::integer
             ) returning id;`)               // nextval('products_sequence')::integer,
             .then(res => {
-                console.log(res.rows[0].id)
                 return res.rows[0].id
             })
             .catch (error => {
