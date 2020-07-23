@@ -126,7 +126,7 @@ async function enterProduct(product) {
                 nextval('products_sequence')::integer,
                 '${product.created}'::text,
                 ${product.usr} ::integer,
-                'test'::text,
+                '${product.img}'::text,
                 'test'::text,
                 'test'::text,
                 'test'::text,
