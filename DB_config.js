@@ -115,14 +115,10 @@ async function enterProduct(product) {
             INSERT INTO public.products (
                 id
             ) VALUES (
-                1::integer
+                nextval('products_sequence')::integer
             ) returning id;`)               // nextval('products_sequence')::integer,
             .then(res => {
-                console.log("-------------------------------------------")
-                console.log(res)
-                console.log("-------------------------------------------")
-            //    return res.rows[0].id
-                return 3;
+                return res.rows[0].id
             })
             .catch (error => {
                 console.log("error")  /////
