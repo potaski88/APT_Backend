@@ -118,6 +118,7 @@ async function enterProduct(product) {
                 nextval('products_sequence')::integer
             ) returning id;`)               // nextval('products_sequence')::integer,
             .then(res => {
+                console.log(res.rows[0].id)
                 return res.rows[0].id
             })
             .catch (error => {
